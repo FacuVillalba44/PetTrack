@@ -1,6 +1,14 @@
 # PetTrack
 En este repositorio vamos a desarrollar la aplicación **PetTrack** como una actividad correspondiente al Modulo Programador de Aplicaciones Móviles  2023 de la Tecnicatura en Desarrollo Web y Aplicaciones Digitales del Instituto Superior Politécnico de Córdoba
 para poner en práctica los conocimientos adquiridos durante la cursada. 
+Dicho Modulo esta compuesto por:
+
+-Aplicaciones para Moviles
+
+-Ciberseguridad
+
+-Testeador Software
+
 ***
 ## _Tecnologias Usadas_:
 ### Android Studio:
