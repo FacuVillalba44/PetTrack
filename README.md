@@ -3,11 +3,11 @@ En este repositorio vamos a desarrollar la aplicación **PetTrack** como una act
 para poner en práctica los conocimientos adquiridos durante la cursada. 
 Dicho Modulo esta compuesto por:
 
--Aplicaciones para Moviles
+`-Aplicaciones para Moviles`
 
--Ciberseguridad
+`-Ciberseguridad`
 
--Testeador Software
+`-Testeador Software`
 
 ***
 ## _Tecnologias Usadas_:
