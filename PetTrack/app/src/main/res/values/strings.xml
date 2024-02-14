@@ -1,3 +1,56 @@
 <resources>
     <string name="app_name">PetTrack</string>
+
+    <!-- Login -->
+    <string name="bienvenido">Bienvenido a PetTrack</string>
+    <string name="Inicio">Inicio</string>
+    <string name="email">Ingrese su email</string>
+    <string name="password1">Ingrese su password</string>
+    <string name="registroPregunta">No estas registrado?</string>
+
+    <!-- Registro usuario-->
+    <string name="crearPerfil">Crea tu perfil</string>
+    <string name="nombre">Ingrese su nombre</string>
+    <string name="apellido">Ingrese su apellido</string>
+    <string name="password2">Repita su password</string>
+
+
+    <!-- Mascotas -->
+    <string name="registroMascota">Registrar Nueva Mascota</string>
+    <string name="datosMascota">Datos Mascota</string>
+    <string name="nombreMascota">Ingrese nombre </string>
+    <string name="fechaNacimiento">Fecha de nacimiento</string>
+    <string name="raza">Ingrese Raza</string>
+    <string name="sexo">Ingrese el sexo de su mascota</string>
+    <string name="especie">Ingrese la especie</string>
+
+    <!-- Recordatorios/Registros -->
+    <string name="fecha">Ingrese la especie</string>
+
+
+    <!-- Botones -->
+    <!-- Login -->
+    <string name="ingresar">Ingresar</string>
+    <string name="registrarse">Registrarse</string>
+
+    <!-- Registro usuario -->
+    <string name="crearUsuario">Crear Usuario</string>
+
+    <!-- -->
+    <string name="aceptar">Aceptar</string>
+    <string name="cancelar">Cancelar</string>
+
+    <!-- Crud -->
+    <string name="ver">Ver</string>
+    <string name="editar">Editar</string>
+    <string name="eliminar">Eliminar</string>
+    <string name="agregarNuevo">Agregar</string>
+
+    <!-- Main  -->
+    <string name="mascotas">Mascotas</string>
+    <string name="registros">Registros</string>
+
+
+
+
 </resources>
