@@ -18,20 +18,18 @@ public class DbUsuario extends BaseDeDatos {
 
         long id = 0;
 
-        try{
-            BaseDeDatos DataBase = new BaseDeDatos(context);
-            SQLiteDatabase db = DataBase.getWritableDatabase();
-
+        try {
+            SQLiteDatabase db = this.getWritableDatabase();
 
             ContentValues values = new ContentValues();
-            values.put(BaseDeDatos.COLUMN_NOMBRE, nombre);
-            values.put(BaseDeDatos.COLUMN_EMAIL, email);
-            values.put(BaseDeDatos.COLUMN_PASSWORD, password);
+            values.put(COLUMN_NOMBRE, nombre);
+            values.put(COLUMN_EMAIL, email);
+            values.put(COLUMN_PASSWORD, password);
 
-            id= db.insert(TABLE_USUARIO, null, values);
+            id = db.insert(TABLE_USUARIO, null, values);
 
-        } catch (Exception exc){
-            exc.toString();
+        } catch (Exception exc) {
+            exc.printStackTrace();
         }
 
         return id;

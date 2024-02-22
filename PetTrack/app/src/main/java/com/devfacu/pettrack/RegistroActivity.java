@@ -37,7 +37,6 @@ public class RegistroActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String nombre = editTextNombre.getText().toString().trim();
-
                 String email = editTextEmail.getText().toString();
                 String password1 = editTextPassword1.getText().toString();
                 String password2 = editTextPassword2.getText().toString();
