@@ -4,13 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:background="@drawable/fondoinicio"
+    tools:context=".inicioActivity">
 
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/ivLogo"
         android:layout_width="252dp"
-        android:layout_height="326dp"
+        android:layout_height="252dp"
+        android:layout_marginTop="3dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,55 +20,77 @@
         app:srcCompat="@drawable/logo" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tvSaludo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
-        android:text="HOLA!"
+        android:layout_marginTop="50dp"
+        android:text="@string/hola"
+        android:textSize="28sp"
+        android:textColor="@color/black"
+        android:fontFamily="sans-serif-condensed-light"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/ivLogo" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/tvIniciar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="68dp"
-        android:text="¿Estás registrado?"
+        android:text="@string/pregunta_1"
+        android:textSize="28sp"
+        android:fontFamily="sans-serif-condensed-light"
+        android:textStyle="bold"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/tvSaludo" />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
+        android:id="@+id/btnIniciar"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="Inicia sesion"
+        android:text="@string/txt_btn_inicia"
+        android:textSize="25sp"
+        android:fontFamily="sans-serif-condensed-light"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/color_btn_1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/tvIniciar" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/tvRegistarse"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="¿No estas registrado?"
+        android:text="@string/pregunta_2"
+        android:textSize="28sp"
+        android:fontFamily="sans-serif-condensed-light"
+        android:textStyle="bold"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintTop_toBottomOf="@+id/btnIniciar" />
 
     <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
+        android:id="@+id/btnRegistrarse"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
-        android:text="Registrate"
+        android:text="@string/txt_btn_registrarse"
+        android:textSize="25sp"
+        android:fontFamily="sans-serif-condensed-light"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/color_btn_1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/tvRegistrarse"
         app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>
