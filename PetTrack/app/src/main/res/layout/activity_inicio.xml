@@ -17,7 +17,8 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo" />
+        app:srcCompat="@drawable/logo"
+        android:contentDescription="@string/descripcionLogo" />
 
     <TextView
         android:id="@+id/tvSaludo"
@@ -48,10 +49,11 @@
         app:layout_constraintTop_toBottomOf="@+id/tvSaludo" />
 
     <Button
-        android:id="@+id/btnIniciar"
+        android:id="@+id/btnIniciaSesion"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
+        android:onClick="iniciaSesion"
         android:text="@string/txt_btn_inicia"
         android:textSize="25sp"
         android:fontFamily="sans-serif-condensed-light"
@@ -75,22 +77,25 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnIniciar" />
+        app:layout_constraintTop_toBottomOf="@+id/btnIniciaSesion" />
 
     <Button
         android:id="@+id/btnRegistrarse"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
-        android:text="@string/txt_btn_registrarse"
-        android:textSize="25sp"
-        android:fontFamily="sans-serif-condensed-light"
-        android:textStyle="bold"
-        android:textColor="@color/white"
+        android:layout_marginBottom="48dp"
         android:backgroundTint="@color/color_btn_1"
+        android:fontFamily="sans-serif-condensed-light"
+        android:text="@string/txt_btn_registrarse"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvRegistrarse"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="UnknownId" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,9 +1,19 @@
 <resources>
     <string name="app_name">PetTrack</string>
+    <!-- Strings usados en atributo descripcion -->
+    <string name="descripcionLogo">Logo de la aplicacion compuesto por un perro, un gato y una tablet</string>
     <!-- Strings usados en la pantalla de inicio -->
     <string name="hola">¡HOLA!</string>
     <string name="pregunta_1">¿Estas registrado?</string>
     <string name="pregunta_2">¿No Estas registrado?</string>
     <string name="txt_btn_inicia">INICIA SESION</string>
     <string name="txt_btn_registrarse">REGISTRATE</string>
+
+    <!-- Strings usados en la pantalla de login -->
+    <string name="inicia">Inicia sesión</string>
+    <string name="email">Ingrese su e-mail</string>
+    <string name="ej_email">email@ejemplo.com</string>
+    <string name="password">Ingrese su Contraseña</string>
+    <string name="ej_password">******</string>
+    <string name="btn_inicia">INICIAR</string>
 </resources>
