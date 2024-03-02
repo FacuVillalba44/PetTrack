@@ -14,11 +14,14 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="transparent"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.067"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/btnvolver" />
+        app:srcCompat="@drawable/btnvolver"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageView
         android:id="@+id/ivlogo"
@@ -115,13 +118,16 @@
         android:id="@+id/tvClave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:text="@string/clave"
         android:textAlignment="textStart"
         android:textColor="@color/black"
         android:textSize="15sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="80dp"
-        tools:layout_editor_absoluteY="544dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.311"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etEmailUser" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
