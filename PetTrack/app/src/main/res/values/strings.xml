@@ -16,4 +16,14 @@
     <string name="password">Ingrese su Contraseña</string>
     <string name="ej_password">******</string>
     <string name="btn_inicia">INICIAR</string>
+
+    <!-- Strings usados en la pantalla de registrar -->
+    <string name="tvRegistrarCuenta">Registra una nueva cuenta</string>
+    <string name="nombre">Nombre</string>
+    <string name="ej_nombre">Ingrese su nombre</string>
+    <string name="email_1">Ingrese un e-mail</string>
+    <string name="clave">Ingrese una contraseña</string>
+    <string name="clave2">Repita su contraseña</string>
+    <string name="btn_registrar">Registrar cuenta</string>
+
 </resources>
