@@ -19,6 +19,10 @@ public class inicioActivity extends AppCompatActivity {
     public void iniciaSesion(View view){
         Intent logearse = new Intent(this, LoginActivity.class);
         startActivity(logearse);
-        finish();
+    }
+
+    public void registrarse(View view){
+        Intent registrarse = new Intent(this, RegistrarseActivity.class);
+        startActivity(registrarse);
     }
 }
