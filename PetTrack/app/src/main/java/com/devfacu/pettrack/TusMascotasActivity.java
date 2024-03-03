@@ -34,13 +34,10 @@ public class TusMascotasActivity extends AppCompatActivity {
         dbMascota = new DbMascota(this);
         listaArrayMascotas = new ArrayList<>();
 
-        // Asegúrate de manejar el caso en el que listarMascotasSimplificado() devuelve null
         ArrayList<Mascota> mascotasObtenidas = dbMascota.listarMascotasSimplificado();
         if (mascotasObtenidas != null) {
             listaArrayMascotas.addAll(mascotasObtenidas);
         }
-
-        // Crea una instancia del adaptador y configúralo con la lista de mascotas
         listaMascotasAdapter = new ListaMascotasAdapter(this, listaArrayMascotas);
 
         // Establece el adaptador en el RecyclerView

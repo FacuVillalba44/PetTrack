@@ -13,7 +13,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Registra tu mascota"
+            android:text="Perfil mascota"
             android:textStyle="bold"
             android:textSize="24sp"
             android:layout_gravity="center"
@@ -26,8 +26,8 @@
             android:text="Nombre:"
             android:textStyle="bold"/>
 
-        <EditText
-            android:id="@+id/editTextNombreMascota"
+        <TextView
+            android:id="@+id/textViewNombreMascota"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -42,8 +42,8 @@
             android:layout_marginTop="16dp"
             android:nextFocusDown="@+id/editTextFecNac"/>
 
-        <EditText
-            android:id="@+id/editTextFecNac"
+        <TextView
+            android:id="@+id/textViewFecNac"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -59,8 +59,8 @@
             android:textStyle="bold"
             android:layout_marginTop="16dp"/>
 
-        <EditText
-            android:id="@+id/editTextEspecie"
+        <TextView
+            android:id="@+id/textViewEspecie"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -74,8 +74,8 @@
             android:textStyle="bold"
             android:layout_marginTop="16dp"/>
 
-        <EditText
-            android:id="@+id/editTextRaza"
+        <TextView
+            android:id="@+id/textViewtRaza"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -83,7 +83,6 @@
 
         <!-- Sexo -->
         <TextView
-            android:id="@+id/textViewSexo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Sexo:"
@@ -118,26 +117,6 @@
             android:textStyle="bold"
             android:layout_marginTop="16dp"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/btnSeleccionarImagen"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Seleccionar Imagen"
-                android:layout_weight="1"/>
-
-            <Button
-                android:id="@+id/btnCamara"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Cámara"
-                android:layout_weight="1"/>
-        </LinearLayout>
-
         <ImageView
             android:id="@+id/imageViewFoto"
             android:layout_width="match_parent"
@@ -146,11 +125,27 @@
             android:scaleType="centerCrop"
             android:src="@drawable/ic_launcher_foreground" />
 
-        <Button
-            android:id="@+id/buttonGuardarCambios"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Registrar Mascota"
-            android:layout_marginTop="16dp"/>
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnEditarMascota"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Editar"
+                android:layout_weight="1"
+                android:layout_marginTop="16dp"/>
+
+            <Button
+                android:id="@+id/btnEliminarMascota"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Eliminar"
+                android:layout_weight="1"
+                android:layout_marginTop="16dp"/>
+        </LinearLayout>
+
     </LinearLayout>
 </ScrollView>

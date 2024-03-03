@@ -1,6 +1,7 @@
 package com.devfacu.pettrack.adaptadores;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.util.Log;
@@ -21,6 +22,7 @@ import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.Target;
+import com.devfacu.pettrack.PerfilMascotaActivity;
 import com.devfacu.pettrack.R;
 import com.devfacu.pettrack.entidades.Mascota;
 
@@ -47,25 +49,30 @@ public class ListaMascotasAdapter extends RecyclerView.Adapter<ListaMascotasAdap
     public void onBindViewHolder(@NonNull ContactoViewHolder holder, int position) {
         // Verificar que la lista y el índice sean válidos
         if (listaMascota != null && position >= 0 && position < listaMascota.size()) {
-
-            // Verificar que ContactoViewHolder no sea nulo
             if (holder != null) {
 
                 // Verificar que las vistas en ContactoViewHolder no sean nulas
                 if (holder.imagenPerfil != null && holder.botonPerfil != null) {
 
-                    // Configurar el nombre de la mascota
                     holder.nombreMascota.setText(listaMascota.get(position).getNombre());
 
-                    // Cargar la imagen usando Glide
                     String imagenUri = listaMascota.get(position).getImagen();
                     cargarImagen(holder.imagenPerfil, imagenUri);
 
-                    // Definir la acción del botón
                     holder.botonPerfil.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            // Aquí puedes agregar la lógica para navegar a la actividad del perfil de mascotas
+                            int adapterPosition = holder.getBindingAdapterPosition();
+
+                            if (adapterPosition != RecyclerView.NO_POSITION) {
+                                Mascota mascotaSeleccionada = listaMascota.get(adapterPosition);
+                                int id_mascota = mascotaSeleccionada.getId_mascota();
+
+                                Intent intent = new Intent(context, PerfilMascotaActivity.class);
+                                intent.putExtra("id_mascota", id_mascota);
+                                intent.putExtra("imagen", mascotaSeleccionada.getImagen());
+                                context.startActivity(intent);
+                            }
                         }
                     });
 
@@ -117,6 +124,10 @@ public class ListaMascotasAdapter extends RecyclerView.Adapter<ListaMascotasAdap
         ImageView imagenPerfil;
         TextView nombreMascota;
         Button botonPerfil;
+        TextView fechaNacimiento;
+        TextView especie;
+        TextView raza;
+        TextView sexo;
 
         public ContactoViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -124,6 +135,10 @@ public class ListaMascotasAdapter extends RecyclerView.Adapter<ListaMascotasAdap
             imagenPerfil = itemView.findViewById(R.id.imageViewPerfilMascota);
             nombreMascota = itemView.findViewById(R.id.textViewNombreMascota);
             botonPerfil = itemView.findViewById(R.id.buttonPerfilMascota);
+            fechaNacimiento = itemView.findViewById(R.id.textViewFecNac);
+            especie = itemView.findViewById(R.id.textViewEspecie);
+            raza = itemView.findViewById(R.id.textViewtRaza);
+            sexo = itemView.findViewById(R.id.textViewSexo);
         }
     }
 }

@@ -3,7 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.devfacu.pettrack">
 
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission
+        android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
     <uses-permission android:name="android.permission.CAMERA" />
@@ -18,7 +20,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PetTrack"
         tools:targetApi="31">
-
+        <activity
+            android:name=".PerfilMascotaActivity"
+            android:exported="false" />
         <!-- Actividades no exportadas -->
         <activity
             android:name=".RegistrarMascotaActivity"
@@ -35,18 +39,17 @@
         <activity
             android:name=".TusMascotasActivity"
             android:exported="false" />
-
         <!-- Actividad principal: LoginActivity -->
         <activity
             android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <!-- /////////////// -->
-
         <activity
             android:name=".MainActivity"
             android:exported="false" />
