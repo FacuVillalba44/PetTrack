@@ -3,7 +3,7 @@ package com.devfacu.pettrack.entidades;
 import java.io.Serializable;
 
 public class Usuario implements Serializable {
-    private long id;
+    private int id;
     private String nombre;
     private String email;
     private String password;
@@ -14,7 +14,7 @@ public class Usuario implements Serializable {
         // Constructor vacío
     }
 
-    public Usuario(long id, String nombre, String email, String password) {
+    public Usuario(int id, String nombre, String email, String password) {
         this.id = id;
         this.nombre = nombre;
         this.email = email;
@@ -23,11 +23,11 @@ public class Usuario implements Serializable {
 
     // Getters y setters
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

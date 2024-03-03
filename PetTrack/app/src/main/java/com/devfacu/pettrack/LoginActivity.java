@@ -53,7 +53,7 @@ public class LoginActivity extends AppCompatActivity {
                     if(checkDatos){
                         Toast.makeText(LoginActivity.this, "Inicio exitoso", Toast.LENGTH_SHORT).show();
 
-                        long usuarioId = db.obtenerIdUsuario(email_usuario, password_usuario);
+                        int usuarioId = db.obtenerIdUsuario(email_usuario, password_usuario);
                         Log.d("LoginActivity", "UsuarioId obtenido: " + usuarioId);
 
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);

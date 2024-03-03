@@ -66,7 +66,7 @@ public class ModificarPerfilActivity extends AppCompatActivity {
                 dbUsuario.getWritableDatabase();
 
                 // Obtener el ID del usuario desde el objeto Usuario
-                long idUsuario = usuario.getId();
+                int idUsuario = usuario.getId();
 
                 // Actualizar la base de datos con los nuevos valores
                 int filasAfectadas = dbUsuario.editarUsuario(idUsuario, nuevoNombre, nuevoEmail, nuevaPassword);

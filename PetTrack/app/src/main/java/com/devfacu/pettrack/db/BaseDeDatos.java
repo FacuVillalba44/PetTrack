@@ -76,6 +76,7 @@ public class BaseDeDatos extends SQLiteOpenHelper {
                 COLUMN_NOMBRE_MASCOTA + " TEXT NOT NULL, " +
                 COLUMN_FECHA_NACIMIENTO + " TEXT NOT NULL, " +
                 COLUMN_RAZA + " TEXT NOT NULL, " +
+                COLUMN_ESPECIE + " TEXT, " +
                 COLUMN_SEXO + " TEXT, " +
                 COLUMN_IMAGEN_MASCOTA + " TEXT," +
                 COLUMN_ID_USUARIO + " INTEGER, " +

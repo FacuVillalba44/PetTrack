@@ -105,7 +105,7 @@ public class DbUsuario extends BaseDeDatos {
 
                 int idUsuario = cursor.getColumnIndex(COLUMN_ID_USUARIO);
                 if (idUsuario != -1) {
-                    usuario.setId(cursor.getLong(idUsuario));
+                    usuario.setId(cursor.getInt(idUsuario));
                 }else {
                     throw new IllegalStateException("La columna " + COLUMN_ID_USUARIO + " no fue encontrada en el cursor.");
                 }
@@ -138,7 +138,7 @@ public class DbUsuario extends BaseDeDatos {
         return usuario;
     }
 
-    public int editarUsuario(long id, String nuevoNombre, String nuevoEmail, String nuevaPassword) {
+    public int editarUsuario(int id, String nuevoNombre, String nuevoEmail, String nuevaPassword) {
         SQLiteDatabase db = getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -151,7 +151,7 @@ public class DbUsuario extends BaseDeDatos {
                 new String[]{String.valueOf(id)});
     }
 
-    public void eliminarUsuario(long id) {
+    public void eliminarUsuario(int id) {
         SQLiteDatabase db = getWritableDatabase();
         db.delete(TABLE_USUARIO, COLUMN_ID_USUARIO + " = ?",
                 new String[]{String.valueOf(id)});

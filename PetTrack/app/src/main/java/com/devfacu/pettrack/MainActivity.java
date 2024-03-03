@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         Button buttonPerfil = findViewById(R.id.button_perfil);
 
         Intent intent = getIntent();
-        long idUsuario = intent.getLongExtra("id_usuario", -1);
+        int idUsuario = intent.getIntExtra("id_usuario", -1);
         Log.d("MainActivity", "Valor de idUsuario: " + idUsuario);
         Log.d("MainActivity", "Después de obtener idUsuario: " + idUsuario);
 
@@ -38,14 +38,15 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
 
-            buttonTusMascotas.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(MainActivity.this, TusMascotasActivity.class);
-                    intent.putExtra("id_usuario", idUsuario);
-                    startActivity(intent);
-                }
-            });
+        buttonTusMascotas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d("MainActivity", "Click en buttonTusMascotas");
+                Intent intent = new Intent(MainActivity.this, TusMascotasActivity.class);
+                intent.putExtra("id_usuario", idUsuario);
+                startActivity(intent);
+            }
+        });
 
             buttonTusRecordatorios.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -59,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
             buttonAgregarMascota.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(MainActivity.this, AgregarMascotaActivity.class);
+                    Intent intent = new Intent(MainActivity.this, RegistrarMascotaActivity.class);
                     intent.putExtra("id_usuario", idUsuario);
                     startActivity(intent);
                 }
