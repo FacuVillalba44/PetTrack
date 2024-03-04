@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
+    android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context=".Home_Activity">
+    tools:context=".MenuMascotasActivity">
 
     <ImageButton
         android:id="@+id/imgBtnVolver"
@@ -16,22 +16,22 @@
         android:background="@null"
         android:minWidth="48dp"
         android:minHeight="48dp"
-        android:onClick="salir"
+        android:onClick="volverAHome"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.067"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/btnvolver"
-        tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageView
         android:id="@+id/ivLogo"
         android:layout_width="252dp"
         android:layout_height="252dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="4dp"
         android:contentDescription="@string/descripcionLogo"
         app:layout_constraintEnd_toEndOf="@+id/tvSaludo"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="@+id/tvSaludo"
         app:layout_constraintTop_toBottomOf="@+id/imgBtnVolver"
         app:srcCompat="@drawable/logo" />
@@ -40,9 +40,9 @@
         android:id="@+id/tvSaludo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="18dp"
         android:fontFamily="sans-serif-condensed-light"
-        android:text="@string/menu_home"
+        android:text="@string/menu_mascotas"
         android:textColor="@color/black"
         android:textSize="35sp"
         android:textStyle="bold"
@@ -64,13 +64,13 @@
         android:textColor="@color/white"
         android:textSize="26sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/btnMascotas"
+        app:layout_constraintEnd_toEndOf="@+id/btnVerMascotas"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/btnMascotas"
+        app:layout_constraintStart_toStartOf="@+id/btnVerMascotas"
         app:layout_constraintTop_toBottomOf="@+id/tvSaludo" />
 
     <Button
-        android:id="@+id/btnMascotas"
+        android:id="@+id/btnVerMascotas"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -78,18 +78,17 @@
         android:fontFamily="sans-serif-condensed-light"
         android:paddingTop="15dp"
         android:paddingBottom="15dp"
-        android:text="@string/btn_mascotas"
+        android:text="@string/btn_ver_mascotas"
         android:textColor="@color/white"
         android:textSize="26sp"
         android:textStyle="bold"
-        android:onClick="menuMascotas"
-        app:layout_constraintEnd_toEndOf="@+id/btnRecordatorios"
+        app:layout_constraintEnd_toEndOf="@+id/btnVerRecordatorios"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/btnRecordatorios"
+        app:layout_constraintStart_toStartOf="@+id/btnVerRecordatorios"
         app:layout_constraintTop_toBottomOf="@+id/btnRegistrarMascota" />
 
     <Button
-        android:id="@+id/btnRecordatorios"
+        android:id="@+id/btnVerRecordatorios"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
@@ -105,7 +104,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnMascotas"
+        app:layout_constraintTop_toBottomOf="@+id/btnVerMascotas"
         app:layout_constraintVertical_bias="0.081" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

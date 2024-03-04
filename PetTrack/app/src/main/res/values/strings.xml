@@ -4,13 +4,13 @@
     <string name="descripcionLogo">Logo de la aplicacion compuesto por un perro, un gato y una tablet</string>
     <!-- Strings usados en la pantalla de inicio -->
     <string name="hola">¡HOLA!</string>
-    <string name="pregunta_1">¿Estas registrado?</string>
-    <string name="pregunta_2">¿No Estas registrado?</string>
+    <string name="pregunta_1">¿ESTÁS REGISTRADO?</string>
+    <string name="pregunta_2">¿NO ESTÁS REGISTRADO?</string>
     <string name="txt_btn_inicia">INICIA SESION</string>
     <string name="txt_btn_registrarse">REGISTRATE</string>
 
     <!-- Strings usados en la pantalla de login -->
-    <string name="inicia">Inicia sesión</string>
+    <string name="inicia">INICIA SESION</string>
     <string name="email">Ingrese su e-mail</string>
     <string name="ej_email">email@ejemplo.com</string>
     <string name="password">Ingrese su Contraseña</string>
@@ -28,7 +28,11 @@
 
     <!--Strings usados en la pantalla de menú principal (home)-->
     <string name="menu_home">Menú principal</string>
-    <string name="btn_agregar_mascota">+Registrar mascota</string>
-    <string name="btn_mascotas">Mascotas</string>
-    <string name="btn_recordatorios">Recordatorios</string>
+    <string name="btn_agregar_mascota">+REGISTRAR MASCOTA</string>
+    <string name="btn_mascotas">MASCOTAS</string>
+    <string name="btn_recordatorios">RECORDATORIOS</string>
+
+    <!--Strings usados en la pantalla de menú de mascotas (MASCOTAS)-->
+    <string name="menu_mascotas">Tus mascotas</string>
+    <string name="btn_ver_mascotas">VER MASCOTAS</string>
 </resources>

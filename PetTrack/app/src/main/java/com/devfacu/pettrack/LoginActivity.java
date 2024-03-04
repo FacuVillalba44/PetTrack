@@ -20,4 +20,9 @@ public class LoginActivity extends AppCompatActivity {
         finish();
         startActivity(logearse);
     }
+    public void volverAInicio(View view){
+        Intent volver = new Intent(this, inicioActivity.class);
+        finish();
+        startActivity(volver);
+    }
 }
