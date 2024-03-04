@@ -16,11 +16,12 @@
         android:background="@null"
         android:minWidth="48dp"
         android:minHeight="48dp"
+        android:onClick="volver"
+        app:srcCompat="@drawable/btnvolver"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.067"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/btnvolver"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageView
@@ -106,7 +107,8 @@
         android:textColor="@color/black"
         android:textColorHint="@color/color_hint_1"
         app:layout_constraintStart_toStartOf="@+id/tvClave"
-        app:layout_constraintTop_toBottomOf="@+id/tvemail" />
+        app:layout_constraintTop_toBottomOf="@+id/tvemail"
+        android:autofillHints="" />
 
     <TextView
         android:id="@+id/tvClave"
@@ -127,7 +129,12 @@
         android:layout_height="46dp"
         android:layout_marginTop="8dp"
         android:ems="10"
+        android:backgroundTint="@color/color_line_1"
         android:inputType="textPassword"
+        android:hint="@string/ej_password"
+        android:minHeight="48dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/color_hint_1"
         app:layout_constraintStart_toStartOf="@+id/tvClave2"
         app:layout_constraintTop_toBottomOf="@+id/tvClave" />
 
@@ -136,6 +143,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
+        android:textAlignment="textStart"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:textStyle="bold"
         android:text="@string/clave2"
         app:layout_constraintStart_toStartOf="@+id/etPassword2"
         app:layout_constraintTop_toBottomOf="@+id/etPassword1" />
@@ -145,8 +156,13 @@
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:backgroundTint="@color/color_line_1"
         android:ems="10"
         android:inputType="textPassword"
+        android:hint="@string/ej_password"
+        android:minHeight="48dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/color_hint_1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.549"
         app:layout_constraintStart_toStartOf="parent"
@@ -154,10 +170,15 @@
 
     <Button
         android:id="@+id/btnRegistrar"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
         android:text="@string/btn_registrar"
+        android:textSize="25sp"
+        android:fontFamily="sans-serif-condensed-light"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/color_btn_1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

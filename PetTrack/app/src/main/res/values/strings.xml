@@ -26,4 +26,9 @@
     <string name="clave2">Repita su contraseña</string>
     <string name="btn_registrar">Registrar cuenta</string>
 
+    <!--Strings usados en la pantalla de menú principal (home)-->
+    <string name="menu_home">Menú principal</string>
+    <string name="btn_agregar_mascota">+Registrar mascota</string>
+    <string name="btn_mascotas">Mascotas</string>
+    <string name="btn_recordatorios">Recordatorios</string>
 </resources>

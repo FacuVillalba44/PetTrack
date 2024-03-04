@@ -23,6 +23,7 @@ public class inicioActivity extends AppCompatActivity {
 
     public void registrarse(View view){
         Intent registrarse = new Intent(this, RegistrarseActivity.class);
+        finish();
         startActivity(registrarse);
     }
 }
