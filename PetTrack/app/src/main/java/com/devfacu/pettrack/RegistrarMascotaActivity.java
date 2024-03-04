@@ -30,6 +30,7 @@ import androidx.fragment.app.DialogFragment;
 
 import com.devfacu.pettrack.db.DbMascota;
 
+import java.io.ByteArrayOutputStream;
 import java.util.Calendar;
 
 public class RegistrarMascotaActivity extends AppCompatActivity {
@@ -112,7 +113,14 @@ public class RegistrarMascotaActivity extends AppCompatActivity {
                 // Agregar bloque try-catch
                 try {
                     dbMascota = new DbMascota(RegistrarMascotaActivity.this);
-                    int id_mascota = dbMascota.crearMascota(nombreMascota, fechaNacimiento, especie, raza, sexo, imagenPerfil, idUsuario);
+                    byte[] bytesImagen = null;
+                    if (selectedImageUri != null) {
+                        Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), selectedImageUri);
+                        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                        bytesImagen = stream.toByteArray();
+                    }
+                    int id_mascota = dbMascota.crearMascota(nombreMascota, fechaNacimiento, especie, raza, sexo, imagenPerfil, bytesImagen, idUsuario);
 
                     // Agregar log para imprimir el ID generado
                     Log.d("RegistrarMascota", "ID de la nueva mascota registrada: " + id_mascota);

@@ -14,6 +14,16 @@ public class Mascota implements Serializable {
     private String sexo;
     private String imagen;
 
+    private byte [] imagen_blob;
+
+    public byte[] getImagen_blob() {
+        return imagen_blob;
+    }
+
+    public void setImagen_blob(byte[] imagen_blob) {
+        this.imagen_blob = imagen_blob;
+    }
+
     public String getImagen() {
         return imagen;
     }

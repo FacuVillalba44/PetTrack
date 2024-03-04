@@ -17,10 +17,6 @@ import java.util.ArrayList;
 
 public class TusMascotasActivity extends AppCompatActivity {
 
-    private DbMascota dbMascota;
-    private ArrayList<Mascota> listaArrayMascotas;
-    private ListaMascotasAdapter listaMascotasAdapter;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,14 +27,14 @@ public class TusMascotasActivity extends AppCompatActivity {
 
         recyclerViewMascotas.setLayoutManager(new LinearLayoutManager(TusMascotasActivity.this));
 
-        dbMascota = new DbMascota(this);
-        listaArrayMascotas = new ArrayList<>();
+        DbMascota dbMascota = new DbMascota(this);
+        ArrayList<Mascota> listaArrayMascotas = new ArrayList<>();
 
-        ArrayList<Mascota> mascotasObtenidas = dbMascota.listarMascotasSimplificado();
+        ArrayList<Mascota> mascotasObtenidas = dbMascota.listarMascotas();
         if (mascotasObtenidas != null) {
             listaArrayMascotas.addAll(mascotasObtenidas);
         }
-        listaMascotasAdapter = new ListaMascotasAdapter(this, listaArrayMascotas);
+        ListaMascotasAdapter listaMascotasAdapter = new ListaMascotasAdapter(this, listaArrayMascotas);
 
         // Establece el adaptador en el RecyclerView
         recyclerViewMascotas.setAdapter(listaMascotasAdapter);

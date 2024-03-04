@@ -40,6 +40,7 @@ public class BaseDeDatos extends SQLiteOpenHelper {
     public static final String COLUMN_RAZA = "raza";
     public static final String COLUMN_IMAGEN_MASCOTA = "imagen_mascota";
 
+    public static final String COLUMN_IMAGEN_BLOB = "imagen_blob";
 
     //Tabla Recordatorio
     public static final String COLUMN_MOTIVO_VISITA = "motivo_visita";
@@ -79,6 +80,7 @@ public class BaseDeDatos extends SQLiteOpenHelper {
                 COLUMN_ESPECIE + " TEXT, " +
                 COLUMN_SEXO + " TEXT, " +
                 COLUMN_IMAGEN_MASCOTA + " TEXT," +
+                COLUMN_IMAGEN_BLOB + " BLOB, " +
                 COLUMN_ID_USUARIO + " INTEGER, " +
                 "FOREIGN KEY(" + COLUMN_ID_USUARIO + ") REFERENCES " + TABLE_USUARIO + "(" + COLUMN_ID_USUARIO + ")" +
                 ")";

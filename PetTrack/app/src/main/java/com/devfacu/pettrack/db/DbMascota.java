@@ -19,7 +19,7 @@ public class DbMascota extends BaseDeDatos {
         super(context);
     }
 
-    public int crearMascota(String nombre, String fecha_nacimiento, String especie, String raza, String sexo, String imagen, int idUsuario) {
+    public int crearMascota(String nombre, String fecha_nacimiento, String especie, String raza, String sexo, String imagen, byte[] imagen_blob, int idUsuario) {
         int id_mascota = -1;
 
         SQLiteDatabase db = getWritableDatabase();
@@ -31,6 +31,7 @@ public class DbMascota extends BaseDeDatos {
         values.put(BaseDeDatos.COLUMN_SEXO, sexo);
         values.put(BaseDeDatos.COLUMN_IMAGEN_MASCOTA, imagen);
         values.put(BaseDeDatos.COLUMN_ID_USUARIO, idUsuario);
+        values.put(BaseDeDatos.COLUMN_IMAGEN_BLOB, imagen_blob);
 
         try {
             id_mascota = (int) db.insert(TABLE_MASCOTA, null, values);
@@ -64,7 +65,8 @@ public class DbMascota extends BaseDeDatos {
                 mascota.setRaza(cursor.getString(cursor.getColumnIndexOrThrow(BaseDeDatos.COLUMN_RAZA)));
                 mascota.setSexo(cursor.getString(cursor.getColumnIndexOrThrow(BaseDeDatos.COLUMN_SEXO)));
                 mascota.setImagen(cursor.getString(cursor.getColumnIndexOrThrow(BaseDeDatos.COLUMN_IMAGEN_MASCOTA)));
-                //mascota.setIdUsuario(cursor.getInt(cursor.getColumnIndexOrThrow(BaseDeDatos.COLUMN_ID_USUARIO)));
+                mascota.setImagen_blob(cursor.getBlob(cursor.getColumnIndexOrThrow(BaseDeDatos.COLUMN_IMAGEN_BLOB)));
+
 
                 listaMascotas.add(mascota);
             }
@@ -133,8 +135,16 @@ public class DbMascota extends BaseDeDatos {
                 mascota.setEspecie(cursor.getString(cursor.getColumnIndexOrThrow(BaseDeDatos.COLUMN_ESPECIE)));
                 mascota.setRaza(cursor.getString(cursor.getColumnIndexOrThrow(BaseDeDatos.COLUMN_RAZA)));
                 mascota.setSexo(cursor.getString(cursor.getColumnIndexOrThrow(BaseDeDatos.COLUMN_SEXO)));
-                mascota.setImagen(cursor.getString(cursor.getColumnIndexOrThrow(BaseDeDatos.COLUMN_IMAGEN_MASCOTA))); // Agregado el campo imagen
-//                mascota.setIdUsuario(cursor.getInt(cursor.getColumnIndexOrThrow(BaseDeDatos.COLUMN_ID_USUARIO)));
+
+
+                byte[] imagenBlob = cursor.getBlob(cursor.getColumnIndexOrThrow(BaseDeDatos.COLUMN_IMAGEN_MASCOTA));
+                if (imagenBlob != null) {
+                    mascota.setImagen_blob(imagenBlob);
+                } else {
+                    Log.e("DbMascota", "La imagen BLOB es nula para la mascota con ID " + idMascota);
+                }
+
+//            mascota.setIdUsuario(cursor.getInt(cursor.getColumnIndexOrThrow(BaseDeDatos.COLUMN_ID_USUARIO)));
             }
         } catch (Exception ex) {
             Log.e("DbMascota", "Error al obtener detalles de mascota: " + ex.getMessage());
