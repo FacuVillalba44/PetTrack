@@ -17,7 +17,7 @@ import com.devfacu.pettrack.entidades.Usuario;
 
 public class PerfilActivity extends AppCompatActivity {
 
-    private static final int TU_CODIGO_DE_SOLICITUD = 1; // Puedes elegir un valor específico
+    private static final int TU_CODIGO_DE_SOLICITUD = 1;
 
     private Usuario usuario;
     private DbUsuario dbUsuario;
@@ -37,7 +37,7 @@ public class PerfilActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         if (intent != null && intent.hasExtra("id_usuario")) {
-            long idUsuario = intent.getLongExtra("id_usuario", -1);
+            int idUsuario = intent.getIntExtra("id_usuario", -1);
 
             Log.d("PerfilActivity", "idUsuario recibido: " + idUsuario);
 

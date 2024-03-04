@@ -17,9 +17,9 @@ public class DbUsuario extends BaseDeDatos {
         super(context);
     }
 
-    public long crearUsuario (String nombre, String email, String password){
+    public int crearUsuario (String nombre, String email, String password){
 
-        long id = 0;
+        int id = 0;
 
         try {
             SQLiteDatabase db = this.getWritableDatabase();
@@ -29,7 +29,7 @@ public class DbUsuario extends BaseDeDatos {
             values.put(COLUMN_EMAIL, email);
             values.put(COLUMN_PASSWORD, password);
 
-            id = db.insert(TABLE_USUARIO, null, values);
+            id = (int) db.insert(TABLE_USUARIO, null, values);
 
         } catch (Exception exc) {
             exc.printStackTrace();
@@ -85,7 +85,7 @@ public class DbUsuario extends BaseDeDatos {
         return idUsuario;
     }
 
-    public Usuario getUsuarioById(long id) {
+    public Usuario getUsuarioById(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.query(
