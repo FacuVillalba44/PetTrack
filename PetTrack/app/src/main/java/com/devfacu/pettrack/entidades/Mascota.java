@@ -16,6 +16,13 @@ public class Mascota implements Serializable {
 
     private byte [] imagen_blob;
 
+    public int getId_usuario() {
+        return id_usuario;
+    }
+    public void setId_usuario(int id_usuario) {
+        this.id_usuario = id_usuario;
+    }
+    private int id_usuario;
     public byte[] getImagen_blob() {
         return imagen_blob;
     }

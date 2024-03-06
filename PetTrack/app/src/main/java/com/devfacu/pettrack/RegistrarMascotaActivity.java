@@ -77,6 +77,7 @@ public class RegistrarMascotaActivity extends AppCompatActivity {
         botonCamara = findViewById(R.id.btnCamara);
         imageViewFoto = findViewById(R.id.imageViewFoto);
         botonGuardarCambios = findViewById(R.id.buttonGuardarCambios);
+
         Intent intent = getIntent();
         editTextFechaNacimiento.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -161,7 +162,7 @@ public class RegistrarMascotaActivity extends AppCompatActivity {
             }
         }
     }
-    private void setFechaNacimiento(String fecha_seleccionada) {
+    public void setFechaNacimiento(String fecha_seleccionada) {
         editTextFechaNacimiento.setText(fecha_seleccionada);
     }
 }

@@ -135,7 +135,7 @@ public class DbMascota extends BaseDeDatos {
                 mascota.setEspecie(cursor.getString(cursor.getColumnIndexOrThrow(BaseDeDatos.COLUMN_ESPECIE)));
                 mascota.setRaza(cursor.getString(cursor.getColumnIndexOrThrow(BaseDeDatos.COLUMN_RAZA)));
                 mascota.setSexo(cursor.getString(cursor.getColumnIndexOrThrow(BaseDeDatos.COLUMN_SEXO)));
-
+                mascota.setImagen(cursor.getString(cursor.getColumnIndexOrThrow(BaseDeDatos.COLUMN_IMAGEN_MASCOTA)));
 
                 byte[] imagenBlob = cursor.getBlob(cursor.getColumnIndexOrThrow(BaseDeDatos.COLUMN_IMAGEN_MASCOTA));
                 if (imagenBlob != null) {
@@ -144,7 +144,7 @@ public class DbMascota extends BaseDeDatos {
                     Log.e("DbMascota", "La imagen BLOB es nula para la mascota con ID " + idMascota);
                 }
 
-//            mascota.setIdUsuario(cursor.getInt(cursor.getColumnIndexOrThrow(BaseDeDatos.COLUMN_ID_USUARIO)));
+                mascota.setId_usuario(cursor.getInt(cursor.getColumnIndexOrThrow(BaseDeDatos.COLUMN_ID_USUARIO)));
             }
         } catch (Exception ex) {
             Log.e("DbMascota", "Error al obtener detalles de mascota: " + ex.getMessage());
@@ -159,7 +159,7 @@ public class DbMascota extends BaseDeDatos {
     }
 
 
-    public int editarMascota(int idMascota, String nombre, String fechaNacimiento, String especie, String raza, String sexo, String imagen) {
+    public int editarMascota(int idMascota, String nombre, String fechaNacimiento, String especie, String raza, String sexo, String imagen, byte[] imgBlob, int id_usuario) {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(BaseDeDatos.COLUMN_NOMBRE_MASCOTA, nombre);
@@ -168,6 +168,8 @@ public class DbMascota extends BaseDeDatos {
         values.put(BaseDeDatos.COLUMN_RAZA, raza);
         values.put(BaseDeDatos.COLUMN_SEXO, sexo);
         values.put(BaseDeDatos.COLUMN_IMAGEN_MASCOTA, imagen);
+        values.put(BaseDeDatos.COLUMN_IMAGEN_BLOB, imgBlob);
+        values.put(BaseDeDatos.COLUMN_ID_USUARIO, id_usuario);
 
         int rowsAffected = -1;
 

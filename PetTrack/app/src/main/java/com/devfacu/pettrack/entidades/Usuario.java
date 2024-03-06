@@ -8,6 +8,7 @@ public class Usuario implements Serializable {
     private String email;
     private String password;
 
+
     // Constructores, getters y setters
 
     public Usuario() {

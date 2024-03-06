@@ -70,7 +70,7 @@ public class ListaMascotasAdapter extends RecyclerView.Adapter<ListaMascotasAdap
 
                                 Intent intent = new Intent(context, PerfilMascotaActivity.class);
                                 intent.putExtra("id_mascota", id_mascota);
-                                intent.putExtra("imagen_blob", mascotaSeleccionada.getImagen_blob());
+                                intent.putExtra("imagen_blob", imagenBlob);
                                 context.startActivity(intent);
                             }
                         }
