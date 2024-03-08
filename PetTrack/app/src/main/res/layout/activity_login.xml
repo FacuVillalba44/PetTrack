@@ -9,7 +9,7 @@
     tools:context=".LoginActivity">
 
     <ImageButton
-        android:id="@+id/imgBtnVolver"
+        android:id="@+id/imgBtnVolver_L"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -22,7 +22,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/btnvolver"
-        tools:ignore="SpeakableTextPresentCheck" />
+        tools:ignore="SpeakableTextPresentCheck"
+        android:importantForAccessibility="no" />
 
     <ImageView
         android:id="@+id/ivLogoInicio"
@@ -33,7 +34,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgBtnVolver"
+        app:layout_constraintTop_toBottomOf="@+id/imgBtnVolver_L"
         app:srcCompat="@drawable/logo" />
 
     <TextView
@@ -70,7 +71,7 @@
         tools:ignore="RtlHardcoded" />
 
     <EditText
-        android:id="@+id/etEmail"
+        android:id="@+id/etEmailUsuario_L"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
@@ -101,11 +102,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.258"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etEmail"
+        app:layout_constraintTop_toBottomOf="@+id/etEmailUsuario_L"
         tools:ignore="RtlHardcoded" />
 
     <EditText
-        android:id="@+id/etPassword"
+        android:id="@+id/etClaveUsuario_L"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
@@ -127,17 +128,18 @@
         android:id="@+id/btnIniciaSesion"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginBottom="40dp"
         android:backgroundTint="@color/color_btn_1"
         android:fontFamily="sans-serif-condensed-light"
+        android:onClick="iniciarSesion"
         android:text="@string/inicia"
         android:textColor="@color/white"
         android:textSize="25sp"
         android:textStyle="bold"
-        android:onClick="iniciarSesion"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPassword"
         tools:ignore="DuplicateSpeakableTextCheck,TextContrastCheck" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

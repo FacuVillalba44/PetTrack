@@ -35,4 +35,27 @@
     <!--Strings usados en la pantalla de menú de mascotas (MASCOTAS)-->
     <string name="menu_mascotas">Tus mascotas</string>
     <string name="btn_ver_mascotas">VER MASCOTAS</string>
+
+    <!--Strings usados en la pantalla de menú de Registrar Mascotas -->
+    <string name="foto_mascota">Añadir una foto de perfil</string>
+    <string name="especie">Especie</string>
+    <string name="nacimiento">Fecha de nacimiento</string>
+    <string name="hembra">Hembra</string>
+    <string name="macho">Macho</string>
+    <string name="eligir_fecha">Click aquí y Seleccione una fecha</string>
+    <string name="ej_nombre_mascota">Ingrese el nombre de su mascota</string>
+    <string name="registra_tu_mascota">Registra tu mascota</string>
+    <string name="Sexo_Mascota">Sexo:</string>
+    <string name="razaMascota">Raza:</string>
+    <string name="ej_raza_mascota">ingrese la raza de su mascota</string>
+
+    <!--Sttrings usados en la pantalla de agregar recordatorios-->
+    <string name="tv_fecha_recordatorio">Seleccione la fecha del recordatio</string>
+    <string name="tv_motivo_recordatorio">Motivo del recordatorio</string>
+    <string name="tv_mascota_recordatorio">Mascota a la que aplica</string>
+    <string name="tv_title_recordatorios">Añadir Racordatorio</string>
+    <string name="btn_registrar_recordatorio">REGISTRAR RECORDATORIO</string>
+    <string name="btn_cancelar">CANCELAR</string>
+    <string name="registrar_recordatorio_H">+Registrar recordatorio</string>
+
 </resources>

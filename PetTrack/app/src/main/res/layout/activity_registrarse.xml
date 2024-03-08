@@ -128,15 +128,16 @@
         android:layout_width="280dp"
         android:layout_height="46dp"
         android:layout_marginTop="8dp"
-        android:ems="10"
         android:backgroundTint="@color/color_line_1"
-        android:inputType="textPassword"
+        android:ems="10"
         android:hint="@string/ej_password"
+        android:inputType="textPassword"
         android:minHeight="48dp"
         android:textColor="@color/black"
         android:textColorHint="@color/color_hint_1"
         app:layout_constraintStart_toStartOf="@+id/tvClave2"
-        app:layout_constraintTop_toBottomOf="@+id/tvClave" />
+        app:layout_constraintTop_toBottomOf="@+id/tvClave"
+        tools:ignore="TouchTargetSizeCheck,DuplicateSpeakableTextCheck" />
 
     <TextView
         android:id="@+id/tvClave2"
@@ -169,7 +170,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tvClave2" />
 
     <Button
-        android:id="@+id/btnRegistrar"
+        android:id="@+id/btnRegistrarMascota_F"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"

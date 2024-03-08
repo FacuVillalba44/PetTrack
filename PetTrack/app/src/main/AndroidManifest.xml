@@ -13,7 +13,10 @@
         android:theme="@style/Theme.PetTrack"
         tools:targetApi="31">
         <activity
-            android:name=".MenuMascotasActivity"
+            android:name=".RegistrarMascotaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RegistrarRecordatorioActivity"
             android:exported="false" />
         <activity
             android:name=".Home_Activity"

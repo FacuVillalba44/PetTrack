@@ -8,22 +8,33 @@ import android.widget.Button;
 import android.os.Bundle;
 
 public class inicioActivity extends AppCompatActivity {
-    public Button btnIniciar, btnRegistrarse;
+    Button btnIniciar, btnRegistrarse;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inicio);
         btnIniciar = findViewById(R.id.btnIniciaSesion);
         btnRegistrarse = findViewById(R.id.btnRegistrarse);
-    }
-    public void iniciaSesion(View view){
-        Intent logearse = new Intent(this, LoginActivity.class);
-        startActivity(logearse);
-    }
 
-    public void registrarse(View view){
-        Intent registrarse = new Intent(this, RegistrarseActivity.class);
-        finish();
-        startActivity(registrarse);
-    }
+        //ir a pantalla de login
+        btnIniciar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent iniciarSesion = new Intent(inicioActivity.this, LoginActivity.class);
+                startActivity(iniciarSesion);
+            }
+        });
+
+        //ir a pantalla de login
+        btnRegistrarse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent registrarse = new Intent(inicioActivity.this, RegistrarseActivity.class);
+                startActivity(registrarse);
+            }
+        });
+
+
+    }//<llave de onCreate
+
 }
