@@ -26,6 +26,7 @@ import com.bumptech.glide.request.target.Target;
 import com.devfacu.pettrack.PerfilMascotaActivity;
 import com.devfacu.pettrack.R;
 import com.devfacu.pettrack.entidades.Mascota;
+import com.devfacu.pettrack.entidades.Usuario;
 
 import java.util.ArrayList;
 
@@ -33,6 +34,7 @@ public class ListaMascotasAdapter extends RecyclerView.Adapter<ListaMascotasAdap
 
     private ArrayList<Mascota> listaMascota;
     private Context context;
+    private Usuario usuario;
 
     public ListaMascotasAdapter(Context context, ArrayList<Mascota> listaMascota) {
         this.context = context;
@@ -67,10 +69,12 @@ public class ListaMascotasAdapter extends RecyclerView.Adapter<ListaMascotasAdap
                             if (adapterPosition != RecyclerView.NO_POSITION) {
                                 Mascota mascotaSeleccionada = listaMascota.get(adapterPosition);
                                 int id_mascota = mascotaSeleccionada.getId_mascota();
+//                                int id_usuario = usuario.getId();
 
                                 Intent intent = new Intent(context, PerfilMascotaActivity.class);
                                 intent.putExtra("id_mascota", id_mascota);
                                 intent.putExtra("imagen_blob", imagenBlob);
+//                                intent.putExtra("id_usuario", id_usuario);
                                 context.startActivity(intent);
                             }
                         }
@@ -103,7 +107,6 @@ public class ListaMascotasAdapter extends RecyclerView.Adapter<ListaMascotasAdap
                     .error(R.drawable.error)
                     .into(imageView);
         } else {
-            // Si no hay datos en el BLOB, puedes establecer una imagen predeterminada o manejarlo de otra manera.
             imageView.setImageResource(R.drawable.placeholder);
         }
     }

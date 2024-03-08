@@ -28,15 +28,15 @@ public class MainActivity extends AppCompatActivity {
         Log.d("MainActivity", "Después de obtener idUsuario: " + idUsuario);
 
 
-            buttonPerfil.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(MainActivity.this, PerfilActivity.class);
-                    intent.putExtra("id_usuario", idUsuario);
-                    Log.d("MainActivity", "antes de ir a perfil: " + idUsuario);
-                    startActivity(intent);
-                }
-            });
+        buttonPerfil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, PerfilActivity.class);
+                intent.putExtra("id_usuario", idUsuario);
+                Log.d("MainActivity", "antes de ir a perfil: " + idUsuario);
+                startActivity(intent);
+            }
+        });
 
         buttonTusMascotas.setOnClickListener(new View.OnClickListener() {
             @Override
