@@ -2,6 +2,7 @@ package com.devfacu.pettrack;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -17,6 +18,8 @@ import android.widget.Button;
 import android.widget.Toast;
 import android.widget.Spinner;
 
+import androidx.activity.OnBackPressedCallback;
+import androidx.activity.OnBackPressedDispatcher;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Calendar;
@@ -101,6 +104,24 @@ public class RegistrarMascotaActivity extends AppCompatActivity {
                 }
             }
         });
+
+
+
+
+
+
+        //_____Inicio de manejo del botón  de la barra de nativa para volver: Obtener el Dispatcher para el botón de "volver"
+        OnBackPressedDispatcher onBackPressedDispatcher = getOnBackPressedDispatcher();
+        //_____Registrar un callback para manejar el botón de "volver"
+        onBackPressedDispatcher.addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                Intent volverAHome = new Intent(RegistrarMascotaActivity.this, Home_Activity.class);
+                startActivity(volverAHome);
+                finish();
+            }
+        });
+
         
     }//<llave onCreate
     private boolean validarDatosMascota(EditText nombreMascota, EditText RazaMascota,TextView nacimiento) {

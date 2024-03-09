@@ -10,6 +10,8 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
+import androidx.activity.OnBackPressedDispatcher;
 import androidx.appcompat.app.AppCompatActivity;
 
 
@@ -52,7 +54,18 @@ public class LoginActivity extends AppCompatActivity {
         });
 
 
-
+        //_____Inicio de manejo del botón  de la barra de nativa para volver: Obtener el Dispatcher para el botón de "volver"
+        OnBackPressedDispatcher onBackPressedDispatcher = getOnBackPressedDispatcher();
+        //_____Registrar un callback para manejar el botón de "volver"
+        onBackPressedDispatcher.addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                Intent volverAHome = new Intent(LoginActivity.this, inicioActivity.class);
+                startActivity(volverAHome);
+                finish();
+            }
+        });
+        
     }//<llave de onCreate
     private boolean validarUsuarioL(EditText et_email, EditText et_pass) {
         String email = et_email.getText().toString().trim();
