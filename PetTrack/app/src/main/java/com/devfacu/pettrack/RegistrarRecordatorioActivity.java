@@ -11,9 +11,11 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.activity.OnBackPressedDispatcher;
@@ -89,9 +91,14 @@ public class RegistrarRecordatorioActivity extends AppCompatActivity {
         btnRegistrarRecordatorio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String fechaElegida=fechaRSeleccion.getText().toString();
-                String motivo=spinnerMotivoR.getSelectedItem().toString();
-
+                if (validarRecordatorio(fechaRSeleccion)){
+                    String fechaElegida=fechaRSeleccion.getText().toString();
+                    String motivo=spinnerMotivoR.getSelectedItem().toString();
+                    String mascotaAplicada= spinnerMascotaR.getSelectedItem().toString();
+                    Intent volverAHome = new Intent(RegistrarRecordatorioActivity.this, Home_Activity.class);
+                    startActivity(volverAHome);
+                    finish();
+                }
             }
         });
 
@@ -99,15 +106,12 @@ public class RegistrarRecordatorioActivity extends AppCompatActivity {
         btnCancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent volverAHome = new Intent(RegistrarRecordatorioActivity.this, Home_Activity.class);
                 startActivity(volverAHome);
                 finish();
             }
         });
-
-
-
-
 
     //_____Inicio de manejo del botón  de la barra de nativa para volver: Obtener el Dispatcher para el botón de "volver"
         OnBackPressedDispatcher onBackPressedDispatcher = getOnBackPressedDispatcher();
@@ -123,7 +127,17 @@ public class RegistrarRecordatorioActivity extends AppCompatActivity {
 
     }//<Cierre de onCreate
 
-
+    private boolean validarRecordatorio(TextView fechaRecordatorio) {
+        String Nacimiento = fechaRecordatorio.getText().toString();
+        String validarNacimiento = "Click aquí y Seleccione una fecha";
+        if (Nacimiento.equals(validarNacimiento)) {
+            Toast.makeText(getApplicationContext(), "Seleccione una fecha", Toast.LENGTH_LONG).show();
+            return false;
+        } else {
+            // Los campos están completos y correctos
+            return true;
+        }
+    }
 
 
 }

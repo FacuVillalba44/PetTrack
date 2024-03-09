@@ -182,7 +182,7 @@
         android:layout_marginBottom="36dp"
         android:backgroundTint="@color/color_btn_1"
         android:fontFamily="sans-serif-condensed-light"
-        android:text="@string/btn_registrar"
+        android:text="@string/btn_registrar_mascota"
         android:textColor="@color/white"
         android:textSize="25sp"
         android:textStyle="bold"

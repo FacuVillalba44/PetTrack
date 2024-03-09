@@ -48,6 +48,7 @@
     <string name="Sexo_Mascota">Sexo:</string>
     <string name="razaMascota">Raza:</string>
     <string name="ej_raza_mascota">ingrese la raza de su mascota</string>
+    <string name="btn_registrar_mascota" >REGISTRAR MASCOTA</string>
 
     <!--Sttrings usados en la pantalla de agregar recordatorios-->
     <string name="tv_fecha_recordatorio">Seleccione la fecha del recordatio</string>
@@ -57,5 +58,6 @@
     <string name="btn_registrar_recordatorio">REGISTRAR RECORDATORIO</string>
     <string name="btn_cancelar">CANCELAR</string>
     <string name="registrar_recordatorio_H">+Registrar recordatorio</string>
+
 
 </resources>

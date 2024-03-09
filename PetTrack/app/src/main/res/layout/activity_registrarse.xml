@@ -52,7 +52,7 @@
         app:layout_constraintTop_toBottomOf="@+id/ivlogo" />
 
     <TextView
-        android:id="@+id/tvNombre"
+        android:id="@+id/tvNombreUsuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
@@ -62,11 +62,11 @@
         android:textColor="@color/black"
         android:textSize="15sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/etNombre"
+        app:layout_constraintStart_toStartOf="@+id/etNombreUsuario"
         app:layout_constraintTop_toBottomOf="@+id/tvRegistrar" />
 
     <EditText
-        android:id="@+id/etNombre"
+        android:id="@+id/etNombreUsuario"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -76,9 +76,10 @@
         android:inputType="text"
         android:minHeight="48dp"
         android:textColor="@color/black"
+        android:autofillHints="No"
         android:textColorHint="@color/color_hint_1"
         app:layout_constraintStart_toStartOf="@+id/tvemail"
-        app:layout_constraintTop_toBottomOf="@+id/tvNombre" />
+        app:layout_constraintTop_toBottomOf="@+id/tvNombreUsuario" />
 
     <TextView
         android:id="@+id/tvemail"
@@ -91,11 +92,11 @@
         android:textColor="@color/black"
         android:textSize="15sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/etEmailUser"
-        app:layout_constraintTop_toBottomOf="@+id/etNombre" />
+        app:layout_constraintStart_toStartOf="@+id/etEmailUsuario_R"
+        app:layout_constraintTop_toBottomOf="@+id/etNombreUsuario" />
 
     <EditText
-        android:id="@+id/etEmailUser"
+        android:id="@+id/etEmailUsuario_R"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
@@ -108,7 +109,7 @@
         android:textColorHint="@color/color_hint_1"
         app:layout_constraintStart_toStartOf="@+id/tvClave"
         app:layout_constraintTop_toBottomOf="@+id/tvemail"
-        android:autofillHints="" />
+         />
 
     <TextView
         android:id="@+id/tvClave"
@@ -121,7 +122,7 @@
         android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/etPassword1"
-        app:layout_constraintTop_toBottomOf="@+id/etEmailUser" />
+        app:layout_constraintTop_toBottomOf="@+id/etEmailUsuario_R" />
 
     <EditText
         android:id="@+id/etPassword1"
@@ -160,7 +161,8 @@
         android:backgroundTint="@color/color_line_1"
         android:ems="10"
         android:inputType="textPassword"
-        android:hint="@string/ej_password"
+
+        android:autofillHints="password"
         android:minHeight="48dp"
         android:textColor="@color/black"
         android:textColorHint="@color/color_hint_1"
@@ -170,7 +172,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tvClave2" />
 
     <Button
-        android:id="@+id/btnRegistrarMascota_F"
+        android:id="@+id/btnRegistrarUsuario"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"

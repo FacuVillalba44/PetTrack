@@ -1,22 +1,80 @@
 package com.devfacu.pettrack;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
+import androidx.activity.OnBackPressedDispatcher;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class RegistrarseActivity extends AppCompatActivity {
-
+    private EditText etNombreUsuario, etEmail, etPass1, etPass2;
+    Button btnRegistrarse;
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrarse);
-    }
+        etNombreUsuario=findViewById(R.id.etNombreUsuario);
+        etEmail=findViewById(R.id.etEmailUsuario_R);
+        etPass1=findViewById(R.id.etPassword1);
+        etPass2=findViewById(R.id.etPassword2);
+        btnRegistrarse = findViewById(R.id.btnRegistrarUsuario);
+
+
+        btnRegistrarse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(validarDatosL(etEmail,etNombreUsuario,etPass1,etPass2)){
+                    Toast.makeText(getApplicationContext(), "Bienvenido, inicia sesion con tu centaur", Toast.LENGTH_SHORT).show();
+                    Intent login = new Intent(RegistrarseActivity.this,LoginActivity.class);
+                  startActivity(login);
+                  finish();
+                }
+            }
+        });
+    //_____Inicio de manejo del botón  de la barra de nativa para volver: Obtener el Dispatcher para el botón de "volver"
+        OnBackPressedDispatcher onBackPressedDispatcher = getOnBackPressedDispatcher();
+    //_____Registrar un callback para manejar el botón de "volver"
+        onBackPressedDispatcher.addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                Intent volverAHome = new Intent(RegistrarseActivity.this, Home_Activity.class);
+                startActivity(volverAHome);
+                finish();
+            }
+        });
+    }//<llave onCreate
     public void volver(View view){
         Intent volver = new Intent(this, inicioActivity .class);
         finish();
         startActivity(volver);
-
     }
+    private boolean validarDatosL(EditText et_email, EditText et_nombre,EditText et_pass1, EditText et_pass2) {
+        String email = et_email.getText().toString().trim();
+        String nombre = et_nombre.getText().toString().trim();
+        String pass1 = et_pass1.getText().toString().trim();
+        String pass2 = et_pass2.getText().toString().trim();
+
+        if (email.isEmpty()||nombre.isEmpty()||pass1.isEmpty()||pass2.isEmpty()) {
+            Toast.makeText(getApplicationContext(), "Por favor, complete todos los campos", Toast.LENGTH_LONG).show();
+            return false;
+        } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            Toast.makeText(getApplicationContext(), "Ingrese un e-mail válido", Toast.LENGTH_LONG).show();
+            return false;
+        } else if (!pass1.equals(pass2)){
+            Toast.makeText(getApplicationContext(), "Las contraseñas no coinciden", Toast.LENGTH_LONG).show();
+            return false;
+        } else {
+            Toast.makeText(getApplicationContext(), "Te has registrado correctamente", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+    }
+
 }
