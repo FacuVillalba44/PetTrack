@@ -2,6 +2,7 @@
     <string name="app_name">PetTrack</string>
     <!-- Strings usados en atributo descripcion -->
     <string name="descripcionLogo">Logo de la aplicacion compuesto por un perro, un gato y una tablet</string>
+
     <!-- Strings usados en la pantalla de inicio -->
     <string name="hola">¡HOLA!</string>
     <string name="pregunta_1">¿ESTÁS REGISTRADO?</string>
@@ -50,7 +51,7 @@
     <string name="ej_raza_mascota">ingrese la raza de su mascota</string>
     <string name="btn_registrar_mascota">REGISTRAR MASCOTA</string>
 
-    <!--Sttrings usados en la pantalla de agregar recordatorios-->
+    <!--Strings usados en la pantalla de agregar recordatorios-->
     <string name="tv_fecha_recordatorio">Seleccione la fecha del recordatio</string>
     <string name="tv_motivo_recordatorio">Motivo del recordatorio</string>
     <string name="tv_mascota_recordatorio">Mascota a la que aplica</string>
@@ -58,12 +59,24 @@
     <string name="btn_registrar_recordatorio">REGISTRAR RECORDATORIO</string>
     <string name="btn_cancelar">CANCELAR</string>
     <string name="registrar_recordatorio_H">+Registrar recordatorio</string>
-    <!--Sttrings usados en la pantalla de agregar vacunacion-->
+
+    <!--Strings usados en la pantalla de agregar vacunacion-->
     <string name="tv_vacuna_title">Registrar vacunación</string>
     <string name="tv_vacuna_1">Nombre/Motivo de la vacuna</string>
     <string name="tv_fecha_vacuna_1">Fecha de aplicación</string>
     <string name="tv_fecha_vacuna_2">Fecha de próxima aplicación</string>
+    <string name="btn_vacunacion_1">Registrar Vacunación</string>
     <string name="ej_vacuna">Parvovirus</string>
+
+    <!--Strings usados en la pantalla de agregar desparasitaciones-->
+    <string name="tv_desparasitacion_title">Registrar desparasitación</string>
+    <string name="tv_desparasitacion_1">Marca del desparasitante</string>
+    <string name="tv_desparasitacion_2">Tipo de desparasitante</string>
+    <string name="tv_desparasitacion_3">Fecha de administración</string>
+    <string name="tv_desparasitacion_4">Fecha de proxima administración</string>
+    <string name="ej_desparasitacion">NexGard</string>
+        <string name="btn_desparasitacion_1">REGISTRAR DESPARASITACIÓN</string>
+
 
 
 </resources>

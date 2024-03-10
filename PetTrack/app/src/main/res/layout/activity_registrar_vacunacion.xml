@@ -190,9 +190,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:strokeColor="@color/color_text_1"
         app:strokeWidth="2dp" />
-
-
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
