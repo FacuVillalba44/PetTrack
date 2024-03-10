@@ -129,6 +129,7 @@ public class RegistrarRecordatorioActivity extends AppCompatActivity {
 
     }//<Cierre de onCreate
 
+ //______Función externa que se llama para validar datos
     private boolean validarRecordatorio(TextView fechaRecordatorio) {
         String recordatorio = fechaRecordatorio.getText().toString();
         String validarRecordatorio = "Click aquí y Seleccione una fecha";
