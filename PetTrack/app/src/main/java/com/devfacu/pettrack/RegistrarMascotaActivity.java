@@ -99,6 +99,8 @@ public class RegistrarMascotaActivity extends AppCompatActivity {
                     String sexo = selectedRadioButton.getText().toString();
 
                     Toast.makeText(getApplicationContext(), "Datos guardados", Toast.LENGTH_LONG).show();
+                    Intent retornar = new Intent(RegistrarMascotaActivity.this, Home_Activity.class);
+                    startActivity(retornar);
                 }else{
                     Toast.makeText(getApplicationContext(), "Fallo al guardar datos", Toast.LENGTH_LONG).show();
                 }

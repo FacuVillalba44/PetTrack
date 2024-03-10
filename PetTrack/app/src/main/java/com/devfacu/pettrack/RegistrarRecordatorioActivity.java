@@ -1,6 +1,6 @@
 package com.devfacu.pettrack;
 
-import android.annotation.SuppressLint;
+
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Color;
@@ -11,7 +11,6 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -28,7 +27,7 @@ public class RegistrarRecordatorioActivity extends AppCompatActivity {
     ImageButton volverAHome;
     private static final String TAG = "activity_agregar_Recordatorio";
     private DatePickerDialog.OnDateSetListener fechaRecordatorio;
-    private TextView fechaRSeleccion;
+    TextView fechaRSeleccion;
     private Spinner spinnerMascotaR,spinnerMotivoR;
     private Button btnRegistrarRecordatorio, btnCancelar;
 
@@ -61,6 +60,7 @@ public class RegistrarRecordatorioActivity extends AppCompatActivity {
         });
 
     //_______Manejo de calendario-____
+
         fechaRSeleccion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,6 +87,7 @@ public class RegistrarRecordatorioActivity extends AppCompatActivity {
             }
         };
 
+
     //_______Boton registrar recordatorio
         btnRegistrarRecordatorio.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,10 +95,11 @@ public class RegistrarRecordatorioActivity extends AppCompatActivity {
                 if (validarRecordatorio(fechaRSeleccion)){
                     String fechaElegida=fechaRSeleccion.getText().toString();
                     String motivo=spinnerMotivoR.getSelectedItem().toString();
-                    String mascotaAplicada= spinnerMascotaR.getSelectedItem().toString();
+                //    String mascotaAplicada= spinnerMascotaR.getSelectedItem().toString();
                     Intent volverAHome = new Intent(RegistrarRecordatorioActivity.this, Home_Activity.class);
+                    Toast.makeText(getApplicationContext(), "Recordatorio guardado correctamente", Toast.LENGTH_LONG).show();
                     startActivity(volverAHome);
-                    finish();
+
                 }
             }
         });
@@ -128,9 +130,9 @@ public class RegistrarRecordatorioActivity extends AppCompatActivity {
     }//<Cierre de onCreate
 
     private boolean validarRecordatorio(TextView fechaRecordatorio) {
-        String Nacimiento = fechaRecordatorio.getText().toString();
-        String validarNacimiento = "Click aquí y Seleccione una fecha";
-        if (Nacimiento.equals(validarNacimiento)) {
+        String recordatorio = fechaRecordatorio.getText().toString();
+        String validarRecordatorio = "Click aquí y Seleccione una fecha";
+        if (recordatorio.equals(validarRecordatorio)) {
             Toast.makeText(getApplicationContext(), "Seleccione una fecha", Toast.LENGTH_LONG).show();
             return false;
         } else {
