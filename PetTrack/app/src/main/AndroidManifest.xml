@@ -13,6 +13,9 @@
         android:theme="@style/Theme.PetTrack"
         tools:targetApi="31">
         <activity
+            android:name=".RegistrarDesparasitacionActivity"
+            android:exported="false" />
+        <activity
             android:name=".RegistrarVacunacionActivity"
             android:exported="false" />
         <activity
