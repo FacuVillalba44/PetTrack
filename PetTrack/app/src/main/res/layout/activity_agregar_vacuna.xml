@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/textViewTitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Agregar Vacuna"
+        android:textSize="30sp"
+        android:textStyle="bold"/>
+
+    <ImageView
+        android:id="@+id/imageViewFoto"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_below="@id/textViewTitulo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/vacuna" />
+
+    <TextView
+        android:id="@+id/textViewNombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageViewFoto"
+        android:layout_marginTop="40dp"
+        android:textStyle="bold"
+        android:text="Nombre de la Vacuna"/>
+
+    <EditText
+        android:id="@+id/editTextNombreVacuna"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewNombre"
+        android:layout_marginTop="8dp"
+        android:hint="Ingrese el nombre de la vacuna"/>
+
+    <TextView
+        android:id="@+id/textViewFechaAplicacion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextNombreVacuna"
+        android:inputType="datetime"
+        android:layout_marginTop="16dp"
+        android:textStyle="bold"
+        android:text="Fecha de Aplicación"/>
+
+    <EditText
+        android:id="@+id/editTextFechaAplicacion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewFechaAplicacion"
+        android:layout_marginTop="8dp"
+        android:hint="Ingrese la fecha de aplicación"/>
+
+    <TextView
+        android:id="@+id/textViewProximaAplicacion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextFechaAplicacion"
+        android:layout_marginTop="16dp"
+        android:inputType="datetime"
+        android:textStyle="bold"
+        android:text="Próxima Aplicación"/>
+
+    <EditText
+        android:id="@+id/editTextProximaAplicacion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewProximaAplicacion"
+        android:layout_marginTop="8dp"
+        android:hint="Ingrese la próxima aplicación"/>
+
+    <Button
+        android:id="@+id/btnAgregarVacuna"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextProximaAplicacion"
+        android:layout_marginTop="16dp"
+        android:text="Agregar Vacuna"/>
+</RelativeLayout>

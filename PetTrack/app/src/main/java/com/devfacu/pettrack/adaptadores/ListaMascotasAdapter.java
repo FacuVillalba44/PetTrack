@@ -69,12 +69,10 @@ public class ListaMascotasAdapter extends RecyclerView.Adapter<ListaMascotasAdap
                             if (adapterPosition != RecyclerView.NO_POSITION) {
                                 Mascota mascotaSeleccionada = listaMascota.get(adapterPosition);
                                 int id_mascota = mascotaSeleccionada.getId_mascota();
-//                                int id_usuario = usuario.getId();
 
                                 Intent intent = new Intent(context, PerfilMascotaActivity.class);
                                 intent.putExtra("id_mascota", id_mascota);
                                 intent.putExtra("imagen_blob", imagenBlob);
-//                                intent.putExtra("id_usuario", id_usuario);
                                 context.startActivity(intent);
                             }
                         }
@@ -117,8 +115,8 @@ public class ListaMascotasAdapter extends RecyclerView.Adapter<ListaMascotasAdap
         TextView nombreMascota;
         Button botonPerfil;
         TextView fechaNacimiento;
-        TextView especie;
-        TextView raza;
+//        TextView especie;
+//        TextView raza;
         TextView sexo;
 
         public ContactoViewHolder(@NonNull View itemView) {
@@ -128,8 +126,8 @@ public class ListaMascotasAdapter extends RecyclerView.Adapter<ListaMascotasAdap
             nombreMascota = itemView.findViewById(R.id.textViewNombreMascota);
             botonPerfil = itemView.findViewById(R.id.buttonPerfilMascota);
             fechaNacimiento = itemView.findViewById(R.id.textViewFecNac);
-            especie = itemView.findViewById(R.id.textViewEspecie);
-            raza = itemView.findViewById(R.id.textViewtRaza);
+//            especie = itemView.findViewById(R.id.textViewEspecie);
+//            raza = itemView.findViewById(R.id.textViewtRaza);
             sexo = itemView.findViewById(R.id.textViewSexo);
         }
     }

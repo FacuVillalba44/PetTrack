@@ -51,36 +51,6 @@
             android:hint="Ingrese la fecha de nacimiento"
             android:inputType="date"/>
 
-        <!-- Especie -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Especie:"
-            android:textStyle="bold"
-            android:layout_marginTop="16dp"/>
-
-        <TextView
-            android:id="@+id/textViewEspecie"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="Ingrese la especie de la mascota"/>
-
-        <!-- Raza -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Raza:"
-            android:textStyle="bold"
-            android:layout_marginTop="16dp"/>
-
-        <TextView
-            android:id="@+id/textViewtRaza"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="Ingrese la raza de la mascota"/>
-
         <!-- Sexo -->
         <TextView
             android:layout_width="wrap_content"
@@ -89,25 +59,12 @@
             android:textStyle="bold"
             android:layout_marginTop="16dp"/>
 
-        <RadioGroup
-            android:id="@+id/radioGroupSex"
+        <TextView
+            android:id="@+id/textViewSexo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:orientation="horizontal">
-
-            <RadioButton
-                android:id="@+id/radioMacho"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Macho"/>
-
-            <RadioButton
-                android:id="@+id/radioHembra"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Hembra"/>
-        </RadioGroup>
+            android:hint="Sexo Mascota"/>
 
         <!-- Imagen -->
         <TextView
@@ -120,7 +77,7 @@
         <ImageView
             android:id="@+id/imageViewFoto"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="200dp"
             android:layout_marginTop="8dp"
             android:scaleType="centerCrop" />
 
@@ -133,7 +90,7 @@
                 android:id="@+id/btnEditarMascota"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Editar"
+                android:text="Editar Datos"
                 android:layout_weight="1"
                 android:layout_marginTop="16dp"/>
 
@@ -141,10 +98,16 @@
                 android:id="@+id/btnEliminarMascota"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Eliminar"
+                android:text="Eliminar Mascota"
                 android:layout_weight="1"
                 android:layout_marginTop="16dp"/>
         </LinearLayout>
+        <Button
+            android:id="@+id/btnIrVacunas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Vacunas"
+            android:layout_marginTop="16dp"/>
 
     </LinearLayout>
 </ScrollView>

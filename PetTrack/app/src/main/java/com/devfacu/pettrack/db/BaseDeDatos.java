@@ -18,12 +18,14 @@ public class BaseDeDatos extends SQLiteOpenHelper {
     public static final String TABLE_MASCOTA = "mascota";
 
     public static final String TABLE_RECORDATORIO = "recordatorio";
+    public static final String TABLE_VACUNA = "vacuna";
 
     //Constantes para claves primarias
     public static final String COLUMN_ID_REGISTRO = "id_registro";
     public static final String COLUMN_ID_USUARIO= "id_usuario";
     public static final String COLUMN_ID_MASCOTA = "id_mascota";
     public static final String COLUMN_ID_RECORDATORIO= "id_recordatorio";
+    public static final String COLUMN_ID_VACUNA = "id_vacuna";
 
 
 
@@ -46,6 +48,11 @@ public class BaseDeDatos extends SQLiteOpenHelper {
     public static final String COLUMN_MOTIVO_VISITA = "motivo_visita";
     public static final String COLUMN_FECHA_RECORDATORIO = "fecha_recordatorio";
     public static final String COLUMN_ESTADO = "estado";
+
+    //Tabla Vacuna
+    public static final String COLUMN_NOMBRE_VACUNA = "nombre_vacuna";
+    public static final String COLUMN_FECHA_APLICACION = "fecha_aplicacion";
+    public static final String COLUMN_PROXIMA_APLICACION = "fecha_prox_aplicacion";
 
 
     Context context;
@@ -99,7 +106,16 @@ public class BaseDeDatos extends SQLiteOpenHelper {
 //                ")";
 //        db.execSQL(create_table_recordatorio);
 
+        //TABLA VACUNAS
+        String create_table_vacuna = "CREATE TABLE IF NOT EXISTS " + TABLE_VACUNA + "(" +
+                COLUMN_ID_VACUNA + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                COLUMN_NOMBRE_VACUNA + " TEXT NOT NULL, " +
+                COLUMN_FECHA_APLICACION + " TEXT NOT NULL, " +
+                COLUMN_PROXIMA_APLICACION + " TEXT NOT NULL, " +
+                COLUMN_ID_MASCOTA + " INTEGER, " +
+                "FOREIGN KEY(" + COLUMN_ID_MASCOTA + ") REFERENCES " + TABLE_MASCOTA + "(" + COLUMN_ID_MASCOTA + "))";
 
+        db.execSQL(create_table_vacuna);
     }
 
     @Override

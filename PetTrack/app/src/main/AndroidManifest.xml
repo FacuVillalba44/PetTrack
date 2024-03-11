@@ -23,6 +23,15 @@
         android:theme="@style/Theme.PetTrack"
         tools:targetApi="31">
         <activity
+            android:name=".AgregarVacunaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EditarVacunaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".VacunasMascotaActivity"
+            android:exported="false" />
+        <activity
             android:name=".EditarMascotaActivity"
             android:exported="false" />
         <activity

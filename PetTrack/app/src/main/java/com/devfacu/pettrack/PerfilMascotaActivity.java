@@ -19,12 +19,9 @@ import com.devfacu.pettrack.db.DbMascota;
 import com.devfacu.pettrack.entidades.Mascota;
 
 public class PerfilMascotaActivity extends AppCompatActivity {
-
     private ImageView imageView;
     private Mascota mascota;
-
     private int id_mascota;
-
     int id_usuario;
 
     @Override
@@ -34,14 +31,16 @@ public class PerfilMascotaActivity extends AppCompatActivity {
 
         TextView nombreMascota = findViewById(R.id.textViewNombreMascota);
         TextView fechaNacimiento = findViewById(R.id.textViewFecNac);
-        TextView especie = findViewById(R.id.textViewEspecie);
-        TextView raza = findViewById(R.id.textViewtRaza);
+//        TextView especie = findViewById(R.id.textViewEspecie);
+//        TextView raza = findViewById(R.id.textViewtRaza);
+        TextView sexo = findViewById(R.id.textViewSexo);
         imageView = findViewById(R.id.imageViewFoto);
-        RadioButton radioMacho = findViewById(R.id.radioMacho);
-        RadioButton radioHembra = findViewById(R.id.radioHembra);
+//        RadioButton radioMacho = findViewById(R.id.radioMacho);
+//        RadioButton radioHembra = findViewById(R.id.radioHembra);
 
         Button botonEditarMascota = findViewById(R.id.btnEditarMascota);
         Button botonEliminarMascota = findViewById(R.id.btnEliminarMascota);
+        Button botonVacunas = findViewById(R.id.btnIrVacunas);
 
         Intent intent = getIntent();
         id_mascota = intent.getIntExtra("id_mascota", -1);
@@ -56,21 +55,23 @@ public class PerfilMascotaActivity extends AppCompatActivity {
             if (mascota != null) {
                 nombreMascota.setText(mascota.getNombre());
                 fechaNacimiento.setText(mascota.getFecha_nacimiento());
-                especie.setText(mascota.getEspecie());
-                raza.setText(mascota.getRaza());
+                sexo.setText(mascota.getSexo());
+
+//                especie.setText(mascota.getEspecie());
+//                raza.setText(mascota.getRaza());
 
                 int id_usuario = mascota.getId_usuario();
 
-                if ("Macho".equals(mascota.getSexo())) {
-                    radioMacho.setChecked(true);
-                    radioHembra.setChecked(false);
-                } else if ("Hembra".equals(mascota.getSexo())) {
-                    radioMacho.setChecked(false);
-                    radioHembra.setChecked(true);
-                } else {
-                    radioMacho.setChecked(false);
-                    radioHembra.setChecked(false);
-                }
+//                if ("Macho".equals(mascota.getSexo())) {
+//                    radioMacho.setChecked(true);
+//                    radioHembra.setChecked(false);
+//                } else if ("Hembra".equals(mascota.getSexo())) {
+//                    radioMacho.setChecked(false);
+//                    radioHembra.setChecked(true);
+//                } else {
+//                    radioMacho.setChecked(false);
+//                    radioHembra.setChecked(false);
+//                }
 
                 if (imgBytes != null && imgBytes.length > 0) {
                     cargarImagenDesdeBlob(imgBytes);
@@ -98,6 +99,19 @@ public class PerfilMascotaActivity extends AppCompatActivity {
                 mostrarDialogoConfirmacionBorrar();
             }
         });
+
+        botonVacunas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PerfilMascotaActivity.this, VacunasMascotaActivity.class);
+                intent.putExtra("id_mascota", id_mascota);
+                String nombre_mascota = mascota.getNombre();
+                intent.putExtra("nombre_mascota", nombre_mascota);
+                startActivity(intent);
+            }
+        });
+
+
     }
 
     private void cargarImagenDesdeBlob(byte[] imgBytes) {
@@ -111,6 +125,7 @@ public class PerfilMascotaActivity extends AppCompatActivity {
             e.printStackTrace();
             Log.e("PerfilMascotaActivity", "Error al cargar la imagen desde BLOB con Glide: " + e.getMessage());
         }
+
     }
 
     private void mostrarDialogoConfirmacionBorrar() {
@@ -121,11 +136,9 @@ public class PerfilMascotaActivity extends AppCompatActivity {
         builder.setPositiveButton("Sí", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                // Utiliza la variable de instancia this.mascota
                 int id_mascota = PerfilMascotaActivity.this.mascota.getId_mascota();
                 Log.d("PerfilMascotaActivity", "ID de mascota a eliminar: " + id_mascota);
 
-                // Lógica para eliminar la mascota
                 eliminarMascota(id_mascota);
             }
         });
