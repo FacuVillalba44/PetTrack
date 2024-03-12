@@ -26,6 +26,9 @@ public class Home_Activity extends AppCompatActivity {
         agregarMascota_H = findViewById(R.id.btnRegistrarMascota_H);
         registrarRecord = findViewById(R.id.btnN_R_H);
 
+        Intent intent = getIntent();
+        int id_usuario = intent.getIntExtra("id_ususario", -1);
+
     //______btn para cerrar sesion
         CerrarSesion.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,6 +62,7 @@ public class Home_Activity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             Intent nuevaMascota = new Intent(Home_Activity.this,RegistrarMascotaActivity.class);
+            nuevaMascota.putExtra("id_usuario", id_usuario);
             startActivity(nuevaMascota);
         }
     });
@@ -67,6 +71,7 @@ public class Home_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent nuevoRecordatorio= new Intent(Home_Activity.this,RegistrarRecordatorioActivity.class);
+                nuevoRecordatorio.putExtra("id_usuario", id_usuario);
                 startActivity(nuevoRecordatorio);
         }
     });
