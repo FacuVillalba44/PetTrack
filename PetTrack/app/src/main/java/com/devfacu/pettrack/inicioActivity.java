@@ -3,6 +3,8 @@ package com.devfacu.pettrack;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.nfc.Tag;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.os.Bundle;
@@ -16,11 +18,16 @@ public class inicioActivity extends AppCompatActivity {
         btnIniciar = findViewById(R.id.btnIniciaSesion);
         btnRegistrarse = findViewById(R.id.btnRegistrarse);
 
+        Intent intent = getIntent();
+        int id_usuario = intent.getIntExtra("id_usuario", -1);
+
         //ir a pantalla de login
         btnIniciar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent iniciarSesion = new Intent(inicioActivity.this, LoginActivity.class);
+                iniciarSesion.putExtra("id_usuario", id_usuario);
+
                 startActivity(iniciarSesion);
             }
         });

@@ -1,7 +1,9 @@
 package com.devfacu.pettrack;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -14,12 +16,17 @@ import androidx.activity.OnBackPressedCallback;
 import androidx.activity.OnBackPressedDispatcher;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.devfacu.pettrack.db.DbUsuario;
+
 
 public class LoginActivity extends AppCompatActivity {
 
     Button logearse;
     ImageButton volver;
     EditText emailUsuario, claveUsuario;
+    private SQLiteDatabase db;
+    private DbUsuario dbUsuario;
+
     @SuppressLint("MissingInflatedId")
     @Override
 
@@ -31,12 +38,23 @@ public class LoginActivity extends AppCompatActivity {
         logearse = findViewById(R.id.btnIniciaSesion);
         volver = findViewById(R.id.imgBtnVolver_L);
 
+
+
+        Context context = this;
+        dbUsuario = new DbUsuario(context);
+        SQLiteDatabase bd = dbUsuario.getWritableDatabase();
         //btn iniciar sesion
         logearse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(validarUsuarioL(emailUsuario,claveUsuario)){
+                    String email = emailUsuario.getText().toString();
+                    String clave = claveUsuario.getText().toString();
+
+                    int id_usuario= dbUsuario.obtenerIdUsuario(email, clave);
+
                     Intent home = new Intent(LoginActivity.this, Home_Activity.class);
+                    home.putExtra("id_ususario", id_usuario);
                     finish();
                     startActivity(home);
                 }

@@ -13,9 +13,12 @@ import androidx.activity.OnBackPressedCallback;
 import androidx.activity.OnBackPressedDispatcher;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.devfacu.pettrack.db.DbUsuario;
+
 public class RegistrarseActivity extends AppCompatActivity {
     private EditText etNombreUsuario, etEmail, etPass1, etPass2;
     Button btnRegistrarse;
+    DbUsuario dbUsuario;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,10 +35,23 @@ public class RegistrarseActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(validarDatosL(etEmail,etNombreUsuario,etPass1,etPass2)){
-                    Toast.makeText(getApplicationContext(), "Bienvenido, inicia sesion con tu centaur", Toast.LENGTH_SHORT).show();
-                    Intent login = new Intent(RegistrarseActivity.this,LoginActivity.class);
-                  startActivity(login);
-                  finish();
+                    String email = etEmail.getText().toString();
+                    String nombre_usuario = etNombreUsuario.getText().toString();
+                    String password = etPass1.getText().toString();
+
+                    int id_usuario = dbUsuario.crearUsuario(nombre_usuario, email, password);
+                    if (id_usuario>0){
+                        Toast.makeText(getApplicationContext(), "Bienvenido, inicia sesion con tu credenciales", Toast.LENGTH_SHORT).show();
+                        Intent login = new Intent(RegistrarseActivity.this,LoginActivity.class);
+                        login.putExtra("id_usuario", id_usuario);
+                        startActivity(login);
+                        finish();
+                    }else{
+                        Toast.makeText(getApplicationContext(), "Error al registrar el Ususario", Toast.LENGTH_SHORT).show();
+
+                    }
+
+
                 }
             }
         });
