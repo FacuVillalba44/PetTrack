@@ -2,6 +2,7 @@
     <string name="app_name">PetTrack</string>
     <!-- Strings usados en atributo descripcion -->
     <string name="descripcionLogo">Logo de la aplicacion compuesto por un perro, un gato y una tablet</string>
+    <string name="btn_volver_desc">Botón con forma de flecha</string>
 
     <!-- Strings usados en la pantalla de inicio -->
     <string name="hola">¡HOLA!</string>
@@ -65,7 +66,7 @@
     <string name="tv_vacuna_1">Nombre/Motivo de la vacuna</string>
     <string name="tv_fecha_vacuna_1">Fecha de aplicación</string>
     <string name="tv_fecha_vacuna_2">Fecha de próxima aplicación</string>
-    <string name="btn_vacunacion_1">Registrar Vacunación</string>
+    <string name="btn_vacunacion_1">REGISTRAR VACUNACIÓN</string>
     <string name="ej_vacuna">Parvovirus</string>
 
     <!--Strings usados en la pantalla de agregar desparasitaciones-->
@@ -75,7 +76,14 @@
     <string name="tv_desparasitacion_3">Fecha de administración</string>
     <string name="tv_desparasitacion_4">Fecha de proxima administración</string>
     <string name="ej_desparasitacion">NexGard</string>
-        <string name="btn_desparasitacion_1">REGISTRAR DESPARASITACIÓN</string>
+    <string name="btn_desparasitacion_1">REGISTRAR DESPARASITACIÓN</string>
+    <!--Strings usados en la pantalla de perfil de mascotas -->
+    <string name="tv_nombre_mascota">Nombre:</string>
+    <string name="btn_editar_mascota">Editar info</string>
+    <string name="btn_ver_vacunas">VER VACUNAS</string>
+    <string name="btn_ver_desparasitaciones">VER DESPARASITACIONES</string>
+
+
 
 
 
