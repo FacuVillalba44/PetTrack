@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/fondogradiente"
-    tools:context=".RegistrarMascotaActivity">
-
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fondogradiente"
@@ -19,13 +11,13 @@
         android:id="@+id/imgBtnVolver_RM"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="8dp"
         android:background="@null"
         android:minWidth="48dp"
         android:minHeight="48dp"
         android:onClick="volver"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.049"
+        app:layout_constraintHorizontal_bias="0.044"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/btnvolver"
@@ -33,44 +25,56 @@
 
     <ImageButton
         android:id="@+id/imgBtnAgregarFoto"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_width="115dp"
+        android:layout_height="115dp"
+        android:layout_marginTop="68dp"
+        android:backgroundTint="@color/color_transparente"
+        android:src="@drawable/icono_camara"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.096"
+        app:layout_constraintHorizontal_bias="0.168"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgBtnVolver_RM"
-        android:src="@drawable/icono_camara" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="117dp"
-        android:layout_height="42dp"
-        android:layout_marginTop="4dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="184dp"
         android:text="@string/foto_mascota"
         android:textAlignment="textEnd"
         android:textColor="@color/black"
         android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.081"
+        app:layout_constraintHorizontal_bias="0.112"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgBtnAgregarFoto" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ImageView
+        android:id="@+id/ivMascota"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="102dp"
+        android:src="@drawable/logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.938"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvRegistrar"
-        android:layout_width="186dp"
-        android:layout_height="87dp"
-        android:layout_marginTop="92dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="220dp"
         android:fontFamily="sans-serif-condensed-light"
         android:text="@string/registra_tu_mascota"
         android:textAlignment="textEnd"
         android:textColor="@color/black"
-        android:textSize="35sp"
+        android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.928"
+        app:layout_constraintHorizontal_bias="0.075"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -78,7 +82,7 @@
         android:id="@+id/tvNombreMascota"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:fontFamily="sans-serif-condensed-light"
         android:text="@string/nombre"
         android:textAlignment="textStart"
@@ -86,10 +90,9 @@
         android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.181"
+        app:layout_constraintHorizontal_bias="0.178"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
+        app:layout_constraintTop_toBottomOf="@+id/tvRegistrar" />
 
     <EditText
         android:id="@+id/etNombreMascota"
@@ -112,6 +115,7 @@
         android:id="@+id/tvEspecie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:fontFamily="sans-serif-condensed-light"
         android:text="@string/especie"
         android:textAlignment="textStart"
@@ -145,7 +149,7 @@
         android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.173"
+        app:layout_constraintHorizontal_bias="0.195"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinnerEspecie" />
 
@@ -221,7 +225,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:orientation="horizontal"
-        android:padding="3dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.545"
         app:layout_constraintStart_toStartOf="parent"
@@ -233,7 +236,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="15dp"
             android:checked="true"
-            android:padding="10dp"
+            android:padding="5dp"
             android:text="@string/hembra"
             android:textColor="@color/black"
             android:textSize="15sp"
@@ -245,25 +248,15 @@
             android:id="@+id/rBtnMacho"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="10dp"
+            android:padding="5dp"
             android:text="@string/macho"
             android:textColor="@color/black"
             android:textSize="15sp"
             android:textStyle="bold"
             tools:layout_editor_absoluteX="123dp"
             tools:layout_editor_absoluteY="580dp" />
-
-
     </RadioGroup>
-    <ImageView
-        android:id="@+id/ivMascota"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/logo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroupSex" />
+
     <Button
         android:id="@+id/btnRegistrarMascota_F"
         android:layout_width="300dp"
@@ -277,10 +270,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivMascota" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
