@@ -77,13 +77,21 @@
     <string name="tv_desparasitacion_4">Fecha de proxima administración</string>
     <string name="ej_desparasitacion">NexGard</string>
     <string name="btn_desparasitacion_1">REGISTRAR DESPARASITACIÓN</string>
+
     <!--Strings usados en la pantalla de perfil de mascotas -->
     <string name="tv_nombre_mascota">Nombre:</string>
     <string name="btn_editar_mascota">Editar info</string>
     <string name="btn_ver_vacunas">VER VACUNAS</string>
     <string name="btn_ver_desparasitaciones">VER DESPARASITACIONES</string>
+
+    <!--Strings usados en las cardViews de mascotas-->
     <string name="tv_tittle_perfiles">Mis mascotas</string>
     <string name="btn_ver_perfil">Ver perfil</string>
+
+    <!--Strings usados en las cardViews vacunas-->
+    <string name="ej_fecha_formato">Fec.Ap:</string>
+    <string name="ej_fecha_formato2">Fec.Prox.Ap:</string>
+
 
 
 </resources>
