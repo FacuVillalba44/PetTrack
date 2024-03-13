@@ -162,7 +162,7 @@
         android:fontFamily="sans-serif-condensed-light"
         android:paddingTop="15dp"
         android:paddingBottom="15dp"
-        android:text="@string/btn_registrar_recordatorio"
+        android:text="@string/btn_vacunacion_1"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"

@@ -2,21 +2,31 @@ package com.devfacu.pettrack;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.nfc.Tag;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.os.Bundle;
 
+import com.devfacu.pettrack.db.BaseDeDatos;
+import com.devfacu.pettrack.db.DbUsuario;
+
 public class inicioActivity extends AppCompatActivity {
     Button btnIniciar, btnRegistrarse;
+    DbUsuario dbUsuario;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inicio);
         btnIniciar = findViewById(R.id.btnIniciaSesion);
         btnRegistrarse = findViewById(R.id.btnRegistrarse);
+
+        DbUsuario db = new DbUsuario(this);
+        SQLiteDatabase basededatos = db.getWritableDatabase();
+
 
         Intent intent = getIntent();
         int id_usuario = intent.getIntExtra("id_usuario", -1);

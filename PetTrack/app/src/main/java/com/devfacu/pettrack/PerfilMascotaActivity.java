@@ -3,6 +3,7 @@ package com.devfacu.pettrack;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -12,6 +13,7 @@ import androidx.activity.OnBackPressedCallback;
 import androidx.activity.OnBackPressedDispatcher;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bumptech.glide.Glide;
 import com.devfacu.pettrack.db.DbMascota;
 import com.devfacu.pettrack.entidades.Mascota;
 
@@ -36,7 +38,7 @@ public class PerfilMascotaActivity extends AppCompatActivity {
         sexo=findViewById(R.id.tvSexo_P);
         btnVacunaN=findViewById(R.id.btn_nueva_vacuna_P);
         btnDesparasitacionN=findViewById(R.id.btn_nueva_desparasitacion_P);
-        btnVerVacunas=findViewById(R.id.btn_ver_desparasitaciones_P);
+        btnVerVacunas=findViewById(R.id.btn_ver_vacunas_P);
         btnVerDesparasitaciones=findViewById(R.id.btn_ver_desparasitaciones_P);
 
         Intent intent= getIntent();
@@ -49,10 +51,16 @@ public class PerfilMascotaActivity extends AppCompatActivity {
 
             if (mascota != null){
                 nombre.setText(mascota.getNombre());
-                nacimiento.setText(mascota.getFecha_nacimiento());
-                sexo.setText(mascota.getSexo());
+                nacimiento.setText("Fecha Nacimiento "+mascota.getFecha_nacimiento());
+                sexo.setText("Sexo "+mascota.getSexo());
 
                 int id_ususario = mascota.getId_usuario();
+
+                if (imgBytes != null && imgBytes.length > 0) {
+                    cargarImagenDesdeBlob(imgBytes);
+                } else {
+                    fotoPerfil.setImageResource(R.drawable.placeholder);
+                }
             }
         }
 
@@ -93,7 +101,10 @@ public class PerfilMascotaActivity extends AppCompatActivity {
         btnVerVacunas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent verVacunas = new Intent(PerfilMascotaActivity.this, vacunas_mascota_Activity.class);
+                verVacunas.putExtra("id_mascota", id_mascota);
+                startActivity(verVacunas);
+                finish();
             }
         });
 
@@ -118,4 +129,18 @@ public class PerfilMascotaActivity extends AppCompatActivity {
         });
 
     }//<--llave onCreate
+
+    private void cargarImagenDesdeBlob(byte[] imgBytes) {
+        try {
+            Glide.with(this)
+                    .load(imgBytes)
+                    .placeholder(R.drawable.placeholder)
+                    .error(R.drawable.error)
+                    .into(fotoPerfil);
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.e("PerfilMascotaActivity", "Error al cargar la imagen desde BLOB con Glide: " + e.getMessage());
+        }
+
+    }
 }

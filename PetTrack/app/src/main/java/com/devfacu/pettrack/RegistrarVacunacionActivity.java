@@ -3,6 +3,7 @@ package com.devfacu.pettrack;
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -17,6 +18,8 @@ import androidx.activity.OnBackPressedCallback;
 import androidx.activity.OnBackPressedDispatcher;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.devfacu.pettrack.db.DbVacuna;
+
 import java.util.Calendar;
 import java.util.Objects;
 
@@ -26,6 +29,8 @@ public class RegistrarVacunacionActivity extends AppCompatActivity {
     TextView fechaAplicacion, proximaAplicacion;
     Button registrarVacuna,cancelarRegistro;
     EditText nombreVacuna;
+    DbVacuna dbVacuna;
+    int id_mascota;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -38,6 +43,10 @@ public class RegistrarVacunacionActivity extends AppCompatActivity {
         cancelarRegistro=findViewById(R.id.btnCanelarRegistroV);
         fechaAplicacion = findViewById(R.id.tvFechaAplicacion);
         proximaAplicacion=findViewById(R.id.tvFechaAplicacion2);
+
+        Intent intent = getIntent();
+        id_mascota = intent.getIntExtra("id_mascota", -1);
+
 
 
     //________manejo fecha de aplicación de vacuna
@@ -89,12 +98,35 @@ public class RegistrarVacunacionActivity extends AppCompatActivity {
                     String siguienteAplicacion=proximaAplicacion.getText().toString();
                     String nombreV=nombreVacuna.getText().toString();
 
-                    //Intent volverAHome = new Intent(RegistrarRecordatorioActivity.this, Home_Activity.class);
-                    Toast.makeText(getApplicationContext(), "Registro guardado correctamente", Toast.LENGTH_LONG).show();
-                    //startActivity(volverAHome);
+                    Intent intent = new Intent();
+                    String nombre_mascota = intent.getStringExtra("nombre_mascota");
+
+                    dbVacuna = new DbVacuna(RegistrarVacunacionActivity.this);
+                    SQLiteDatabase db = dbVacuna.getWritableDatabase();
+
+                    int id_vacuna = dbVacuna.crearVacuna(nombreV, fechaAplicada, siguienteAplicacion, id_mascota);
+
+                    if (id_vacuna > 0) {
+                        String mensaje = "Vacuna agregada: " +
+                                "Nombre: " + nombreVacuna +
+                                ", Fecha de Aplicación: " + fechaAplicacion +
+                                ", Próxima Aplicación: " + proximaAplicacion;
+
+                        Toast.makeText(RegistrarVacunacionActivity.this, mensaje, Toast.LENGTH_SHORT).show();
+                        Intent intentTusVacunas = new Intent(RegistrarVacunacionActivity.this, vacunas_mascota_Activity.class);
+                        intentTusVacunas.putExtra("id_vacuna", id_vacuna);
+                        intentTusVacunas.putExtra("id_mascota", id_mascota);
+                        intentTusVacunas.putExtra("nombre_mascota", nombre_mascota);
+                        startActivity(intentTusVacunas);
+                        finish();
+                    }
+                    else {
+                        Toast.makeText(RegistrarVacunacionActivity.this, "Error al intentar registrar una nueva vacuna", Toast.LENGTH_SHORT).show();
+                    }
+                }                    //Intent volverAHome = new Intent(RegistrarRecordatorioActivity.this, Home_Activity.class);
 
                 }
-            }
+
         });
 
         //_____Inicio de manejo del botón  de la barra de nativa para volver

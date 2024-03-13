@@ -13,13 +13,20 @@
         android:theme="@style/Theme.PetTrack"
         tools:targetApi="31">
         <activity
+            android:name=".vacunas_mascota_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".EditarVacunaActivity"
+            android:exported="false" />
+        <activity
             android:name=".perfilesMascotasActivity"
             android:exported="false" />
         <activity
             android:name=".PerfilMascotaActivity"
             android:exported="false" />
-        <activity android:name=".TusMascotasActivity"
-            android:exported="false"/>
+        <activity
+            android:name=".TusMascotasActivity"
+            android:exported="false" />
         <activity
             android:name=".RegistrarDesparasitacionActivity"
             android:exported="false" />
