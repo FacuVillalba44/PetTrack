@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fondogradiente"
-    tools:context=".perfilesMascotasActivity">
+    tools:context=".TusMascotasActivity">
 
     <ImageButton
         android:id="@+id/imgBtnVolver_Perfiles"
@@ -37,7 +37,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerMascotas"
+        android:id="@+id/recyclerViewMascotas"
         android:layout_width="362dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
