@@ -174,7 +174,7 @@ public class RegistrarMascotaActivity extends AppCompatActivity {
 
                         if (id_mascota > 0) {
                             Toast.makeText(getApplicationContext(), "Datos guardados", Toast.LENGTH_LONG).show();
-                            Intent retornar = new Intent(RegistrarMascotaActivity.this, perfilesMascotasActivity.class);
+                            Intent retornar = new Intent(RegistrarMascotaActivity.this, TusMascotasActivity.class);
                             startActivity(retornar);
                         }else{
                             Toast.makeText(getApplicationContext(), "Fallo al guardar datos", Toast.LENGTH_LONG).show();

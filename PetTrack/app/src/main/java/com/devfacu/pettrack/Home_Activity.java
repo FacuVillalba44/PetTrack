@@ -15,8 +15,9 @@ import androidx.activity.OnBackPressedDispatcher;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Home_Activity extends AppCompatActivity {
-    Button registrarRecord,agregarMascota_H,recordatorios_H;
+    Button registrarRecord,agregarMascota_H,recordatorios_H, verMascotas;
     ImageButton CerrarSesion;
+    private int id_usuario;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -26,9 +27,10 @@ public class Home_Activity extends AppCompatActivity {
         CerrarSesion = findViewById(R.id.imgBtnCerrarSesion);
         agregarMascota_H = findViewById(R.id.btnRegistrarMascota_H);
         registrarRecord = findViewById(R.id.btnN_R_H);
+        verMascotas= findViewById(R.id.btnVerMascotas);
 
         Intent intent = getIntent();
-        int id_usuario = intent.getIntExtra("id_ususario", -1);
+        id_usuario = intent.getIntExtra("id_ususario", -1);
         Log.d("Home", "UsuarioId obtenido: " + id_usuario);
 
     //______btn para cerrar sesion
@@ -78,6 +80,14 @@ public class Home_Activity extends AppCompatActivity {
                 startActivity(nuevoRecordatorio);
         }
     });
+        verMascotas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent verMascotasIntent = new Intent(Home_Activity.this, TusMascotasActivity.class);
+                verMascotasIntent.putExtra("id_usuario", id_usuario);
+                startActivity(verMascotasIntent);
+            }
+        });
 
 
 

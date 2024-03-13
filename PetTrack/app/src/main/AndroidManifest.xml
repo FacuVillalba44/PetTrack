@@ -18,6 +18,8 @@
         <activity
             android:name=".PerfilMascotaActivity"
             android:exported="false" />
+        <activity android:name=".TusMascotasActivity"
+            android:exported="false"/>
         <activity
             android:name=".RegistrarDesparasitacionActivity"
             android:exported="false" />
