@@ -12,12 +12,17 @@ import androidx.activity.OnBackPressedCallback;
 import androidx.activity.OnBackPressedDispatcher;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.devfacu.pettrack.db.DbMascota;
+import com.devfacu.pettrack.entidades.Mascota;
+
 
 public class PerfilMascotaActivity extends AppCompatActivity {
     Button btnEditar, btnVacunaN,btnDesparasitacionN,btnVerVacunas,btnVerDesparasitaciones;
     TextView  nombre,nacimiento,sexo;
     ImageButton btnVolver;
     ImageView fotoPerfil;
+    int id_mascota;
+    Mascota mascota;
     @SuppressLint({"MissingInflatedId", "CutPasteId"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,10 +39,31 @@ public class PerfilMascotaActivity extends AppCompatActivity {
         btnVerVacunas=findViewById(R.id.btn_ver_desparasitaciones_P);
         btnVerDesparasitaciones=findViewById(R.id.btn_ver_desparasitaciones_P);
 
+        Intent intent= getIntent();
+        id_mascota = intent.getIntExtra("id_mascota", -1);
+        byte[] imgBytes = intent.getByteArrayExtra("imagen_blob");
+
+        if (id_mascota != -1){
+            DbMascota dbMascota = new DbMascota(this);
+            mascota = dbMascota.verDetallesMascota(id_mascota);
+
+            if (mascota != null){
+                nombre.setText(mascota.getNombre());
+                nacimiento.setText(mascota.getFecha_nacimiento());
+                sexo.setText(mascota.getSexo());
+
+                int id_ususario = mascota.getId_usuario();
+            }
+        }
+
+
+
         //<----btn editar perfil de mascota
         btnEditar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+//                Intent editarMascota = new Intent(PerfilMascotaActivity.this, EditarMAscotaActivity.class);
+//                editarMascota.putExtra("id_mascota", id_mascota);
 
             }
         });
@@ -46,6 +72,9 @@ public class PerfilMascotaActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent vacunaN = new Intent(PerfilMascotaActivity.this, RegistrarVacunacionActivity.class);
+                vacunaN.putExtra("id_mascota", id_mascota);
+                String nombreMascota = mascota.getNombre();
+                vacunaN.putExtra("nombre_mascota", nombreMascota);
                 finish();
                 startActivity(vacunaN);
             }
@@ -55,6 +84,7 @@ public class PerfilMascotaActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent desparasitacionN = new Intent(PerfilMascotaActivity.this, RegistrarDesparasitacionActivity.class);
+                desparasitacionN.putExtra("id_mascota", id_mascota);
                 finish();
                 startActivity(desparasitacionN);
             }

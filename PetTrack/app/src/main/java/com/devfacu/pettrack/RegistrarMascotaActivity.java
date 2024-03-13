@@ -152,8 +152,12 @@ public class RegistrarMascotaActivity extends AppCompatActivity {
                     String sexo = selectedRadioButton.getText().toString();
 
                     Intent intent = getIntent();
-                    id_usuario = intent.getIntExtra("id_usuario", -1);
-                    Log.d(TAG, "Valor de id_usuario: " + id_usuario);
+                    if (intent.hasExtra("id_usuario")) {
+                        id_usuario = intent.getIntExtra("id_usuario", -1);
+                        Log.d("Registrar mascota", "UsuarioId obtenido: " + id_usuario);
+                    } else {
+                        Log.e("Registrar mascota", "No se encontró el extra 'id_usuario'");
+                    }
 
                     String imagenMascota = (selectedImageUri !=null) ? selectedImageUri.toString() : "";
 
@@ -170,7 +174,7 @@ public class RegistrarMascotaActivity extends AppCompatActivity {
 
                         if (id_mascota > 0) {
                             Toast.makeText(getApplicationContext(), "Datos guardados", Toast.LENGTH_LONG).show();
-                            Intent retornar = new Intent(RegistrarMascotaActivity.this, Home_Activity.class);
+                            Intent retornar = new Intent(RegistrarMascotaActivity.this, perfilesMascotasActivity.class);
                             startActivity(retornar);
                         }else{
                             Toast.makeText(getApplicationContext(), "Fallo al guardar datos", Toast.LENGTH_LONG).show();

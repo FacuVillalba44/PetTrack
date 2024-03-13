@@ -20,6 +20,7 @@ public class inicioActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         int id_usuario = intent.getIntExtra("id_usuario", -1);
+        Log.d("Home activity", "UsuarioId obtenido: " + id_usuario);
 
         //ir a pantalla de login
         btnIniciar.setOnClickListener(new View.OnClickListener() {

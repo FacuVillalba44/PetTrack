@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -28,6 +29,7 @@ public class Home_Activity extends AppCompatActivity {
 
         Intent intent = getIntent();
         int id_usuario = intent.getIntExtra("id_ususario", -1);
+        Log.d("Home", "UsuarioId obtenido: " + id_usuario);
 
     //______btn para cerrar sesion
         CerrarSesion.setOnClickListener(new View.OnClickListener() {
@@ -63,6 +65,7 @@ public class Home_Activity extends AppCompatActivity {
         public void onClick(View v) {
             Intent nuevaMascota = new Intent(Home_Activity.this,RegistrarMascotaActivity.class);
             nuevaMascota.putExtra("id_usuario", id_usuario);
+            Log.d("Home", "UsuarioId obtenido: " + id_usuario);
             startActivity(nuevaMascota);
         }
     });

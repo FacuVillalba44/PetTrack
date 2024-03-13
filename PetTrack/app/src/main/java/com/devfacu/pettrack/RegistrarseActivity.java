@@ -3,6 +3,7 @@ package com.devfacu.pettrack;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -30,6 +31,7 @@ public class RegistrarseActivity extends AppCompatActivity {
         etPass2=findViewById(R.id.etPassword2);
         btnRegistrarse = findViewById(R.id.btnRegistrarUsuario);
 
+        dbUsuario = new DbUsuario(this);
 
         btnRegistrarse.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,6 +42,7 @@ public class RegistrarseActivity extends AppCompatActivity {
                     String password = etPass1.getText().toString();
 
                     int id_usuario = dbUsuario.crearUsuario(nombre_usuario, email, password);
+                    Log.d("LoginActivity", "UsuarioId obtenido: " + id_usuario);
                     if (id_usuario>0){
                         Toast.makeText(getApplicationContext(), "Bienvenido, inicia sesion con tu credenciales", Toast.LENGTH_SHORT).show();
                         Intent login = new Intent(RegistrarseActivity.this,LoginActivity.class);
