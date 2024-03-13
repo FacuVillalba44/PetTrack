@@ -19,13 +19,14 @@ import com.devfacu.pettrack.entidades.Mascota;
 
 
 public class PerfilMascotaActivity extends AppCompatActivity {
+    private static final int TU_REQUEST_CODE = 123; // Puedes usar cualquier número que desees
+
     Button btnEditar, btnVacunaN,btnDesparasitacionN,btnVerVacunas,btnVerDesparasitaciones;
     TextView  nombre,nacimiento,sexo;
     ImageButton btnVolver;
     ImageView fotoPerfil;
     int id_mascota;
     Mascota mascota;
-    @SuppressLint({"MissingInflatedId", "CutPasteId"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,7 +55,6 @@ public class PerfilMascotaActivity extends AppCompatActivity {
                 nacimiento.setText("Fecha Nacimiento "+mascota.getFecha_nacimiento());
                 sexo.setText("Sexo "+mascota.getSexo());
 
-                int id_ususario = mascota.getId_usuario();
 
                 if (imgBytes != null && imgBytes.length > 0) {
                     cargarImagenDesdeBlob(imgBytes);
@@ -70,9 +70,12 @@ public class PerfilMascotaActivity extends AppCompatActivity {
         btnEditar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent editarMascota = new Intent(PerfilMascotaActivity.this, EditarMAscotaActivity.class);
-//                editarMascota.putExtra("id_mascota", id_mascota);
-
+                int id_usuario = mascota.getId_usuario();
+                Intent editarMascota = new Intent(PerfilMascotaActivity.this, EditarMascotaActivity.class);
+                editarMascota.putExtra("id_mascota", id_mascota);
+                editarMascota.putExtra("imagen_blob", imgBytes);
+                editarMascota.putExtra("id_usuario", id_usuario);
+                startActivity(editarMascota);
             }
         });
         //<-----btn Registrar vacuna
@@ -142,5 +145,19 @@ public class PerfilMascotaActivity extends AppCompatActivity {
             Log.e("PerfilMascotaActivity", "Error al cargar la imagen desde BLOB con Glide: " + e.getMessage());
         }
 
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == TU_REQUEST_CODE && resultCode == RESULT_OK) {
+            // Verifica si hay información actualizada
+            int idMascotaActualizada = data.getIntExtra("id_mascota_actualizada", -1);
+
+            if (idMascotaActualizada != -1) {
+                // Realiza operaciones para actualizar la interfaz de usuario con la nueva información
+                // ...
+            }
+        }
     }
 }
