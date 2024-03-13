@@ -82,9 +82,7 @@
     <string name="btn_editar_mascota">Editar info</string>
     <string name="btn_ver_vacunas">VER VACUNAS</string>
     <string name="btn_ver_desparasitaciones">VER DESPARASITACIONES</string>
-
-
-
+    <string name="tv_tittle_perfiles">Mis mascotas</string>
 
 
 </resources>
