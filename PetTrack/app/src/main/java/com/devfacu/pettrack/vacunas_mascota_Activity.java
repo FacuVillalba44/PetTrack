@@ -1,5 +1,6 @@
 package com.devfacu.pettrack;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -67,8 +68,11 @@ public class vacunas_mascota_Activity extends AppCompatActivity {
         }
     }
     @Override
-    protected void onResume() {
-        super.onResume();
-        cargarVacunas();
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == CODIGO_EDICION && resultCode == Activity.RESULT_OK) {
+            cargarVacunas();
+        }
     }
 }

@@ -3,6 +3,7 @@ package com.devfacu.pettrack;
 import android.Manifest;
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -29,6 +30,7 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
@@ -237,6 +239,12 @@ public class EditarMascotaActivity extends AppCompatActivity {
                 }
             }
         });
+        botonEliminarMascota.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mostrarDialogoConfirmacionBorrar();
+            }
+        });
 
     }
     private void cargarImagenDesdeBlob(byte[] imgBytes) {
@@ -293,5 +301,47 @@ public class EditarMascotaActivity extends AppCompatActivity {
                 Toast.makeText(EditarMascotaActivity.this, "Permiso de almacenamiento denegado", Toast.LENGTH_SHORT).show();
             }
         }
+    }
+    private void mostrarDialogoConfirmacionBorrar() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Confirmar eliminación");
+        builder.setMessage("¿Estás seguro de que deseas eliminar esta mascota?");
+
+        builder.setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                int id_mascota = EditarMascotaActivity.this.mascota.getId_mascota();
+                Log.d("PerfilMascotaActivity", "ID de mascota a eliminar: " + id_mascota);
+
+                eliminarMascota(id_mascota);
+            }
+        });
+
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        builder.create().show();
+    }
+
+    private void eliminarMascota(int id_mascota) {
+        DbMascota dbMascota = new DbMascota(EditarMascotaActivity.this);
+        int rowsAffected = dbMascota.eliminarMascota(id_mascota);
+
+        if (rowsAffected > 0) {
+            Toast.makeText(EditarMascotaActivity.this, "Mascota eliminada", Toast.LENGTH_SHORT).show();
+            volverATusMascotasActivity();
+        } else {
+            Toast.makeText(EditarMascotaActivity.this, "Error al eliminar la mascota", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void volverATusMascotasActivity() {
+        Intent intent = new Intent(EditarMascotaActivity.this, TusMascotasActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

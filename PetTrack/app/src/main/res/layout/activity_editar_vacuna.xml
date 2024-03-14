@@ -87,5 +87,22 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/editTextProximaAplicacion"
         android:layout_marginTop="16dp"
-        android:text="Editar Vacuna"/>
+        android:text="Guardar Cambios"/>
+
+    <!-- Espacio separador -->
+    <View
+        android:id="@+id/separador"
+        android:layout_width="match_parent"
+        android:layout_height="26dp"
+        android:layout_below="@id/btnEditarVacuna" />
+
+    <!-- ButtonEliminarVacuna -->
+    <Button
+        android:id="@+id/btnEliminarVacuna"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/separador"
+        android:layout_marginTop="16dp"
+        android:text="Eliminar Vacuna"/>
+
 </RelativeLayout>
