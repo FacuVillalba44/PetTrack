@@ -189,7 +189,6 @@ public class EditarMascotaActivity extends AppCompatActivity {
                 String imagenPerfil = (selectedImageUri != null) ? selectedImageUri.toString() : "";
 
 
-
                 try {
                     dbMascota = new DbMascota(EditarMascotaActivity.this);
                     byte[] bytesImagen = null;
@@ -216,7 +215,6 @@ public class EditarMascotaActivity extends AppCompatActivity {
                         Log.d(TAG, "No se pudo recuperar el ID de usuario de las preferencias");
                     }
 
-
                     int mascotaEditada = dbMascota.editarMascota(id_mascota, nombreMascota, fechaNacimiento, especie, raza, sexo, imagenPerfil, bytesImagen, id_usuario_guardado);
 
                     if (mascotaEditada > 0) {
@@ -229,13 +227,10 @@ public class EditarMascotaActivity extends AppCompatActivity {
                         finish();
                         startActivity(intent);
                     }
-
-
                 } catch (Exception e) {
                     e.printStackTrace();
                     Log.e("EditarMascotaActivity", "Error al registrar mascota: " + e.getMessage());
                     Log.e(TAG, "Error al registrar mascota: " + e.getMessage());
-
                 }
             }
         });
@@ -245,7 +240,6 @@ public class EditarMascotaActivity extends AppCompatActivity {
                 mostrarDialogoConfirmacionBorrar();
             }
         });
-
     }
     private void cargarImagenDesdeBlob(byte[] imgBytes) {
         try {
