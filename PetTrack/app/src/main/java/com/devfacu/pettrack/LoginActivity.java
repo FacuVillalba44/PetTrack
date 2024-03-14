@@ -103,23 +103,4 @@ public class LoginActivity extends AppCompatActivity {
         });
 
     }//<llave de onCreate
-
-//    private boolean validarUsuarioL(EditText et_email, EditText et_pass) {
-//        String email = et_email.getText().toString().trim();
-//        String pass = et_pass.getText().toString().trim();
-//
-//        if (email.isEmpty() || pass.isEmpty()) {
-//            // Mostrar mensaje de error
-//            Toast.makeText(getApplicationContext(), "Por favor, complete todos los campos", Toast.LENGTH_LONG).show();
-//            return false;
-//        } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-//            // Mostrar mensaje de error
-//            Toast.makeText(getApplicationContext(), "Ingrese un e-mail válido", Toast.LENGTH_LONG).show();
-//            return false;
-//        } else {
-//            // Los campos están completos y el email es válido inicia sesion
-//            Toast.makeText(getApplicationContext(), "Bienvenido", Toast.LENGTH_SHORT).show();
-//            return true;
-//        }
-//    }
 }
