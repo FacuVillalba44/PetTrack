@@ -3,7 +3,9 @@ package com.devfacu.pettrack;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -97,6 +99,20 @@ public class RegistrarMascotaActivity extends AppCompatActivity {
         imageViewFoto = findViewById(R.id.ivMascota);
 
         registrarMascota=findViewById(R.id.btnRegistrarMascota_F);
+
+        // Logica para recuperar el usuario al ingresar a la app
+        SharedPreferences sharedPreferences = getSharedPreferences("com.example.myapp.PREFERENCES", Context.MODE_PRIVATE);
+        int id_usuario_guardado = sharedPreferences.getInt("id_usuario", -1);
+
+        if (id_usuario_guardado != -1) {
+            // El ID de usuario se recuperó correctamente
+            Log.d("Home_Activity", "ID de usuario recuperado de las preferencias: " + id_usuario_guardado);
+        } else {
+            // No se pudo recuperar el ID de usuario de las preferencias
+            Log.d("Home_Activity", "No se pudo recuperar el ID de usuario de las preferencias");
+        }
+
+        id_usuario = id_usuario_guardado;
 //__________________________Boton Seleccionar Imagen__________________________________
 
         botonAgregarImg.setOnClickListener(new View.OnClickListener() {

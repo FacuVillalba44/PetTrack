@@ -64,7 +64,7 @@ public class EditarVacunaActivity extends AppCompatActivity {
                 if (id_vacunaEditada > 0) {
                     Toast.makeText(EditarVacunaActivity.this, "Vacuna editada", Toast.LENGTH_LONG).show();
 
-                    Intent volverListaVacunas = new Intent(EditarVacunaActivity.this, vacunas_mascota_Activity.class);
+                    Intent volverListaVacunas = new Intent(EditarVacunaActivity.this, TusMascotasActivity.class);
                     volverListaVacunas.putExtra("id_mascota", id_mascota);
                     startActivity(volverListaVacunas);
                 } else {

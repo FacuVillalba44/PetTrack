@@ -3,8 +3,10 @@ package com.devfacu.pettrack;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -33,11 +35,10 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        emailUsuario=findViewById(R.id.etEmailUsuario_L);
+        emailUsuario = findViewById(R.id.etEmailUsuario_L);
         claveUsuario = findViewById(R.id.etClaveUsuario_L);
         logearse = findViewById(R.id.btnIniciaSesion);
         volver = findViewById(R.id.imgBtnVolver_L);
-
 
 
         Context context = this;
@@ -47,16 +48,33 @@ public class LoginActivity extends AppCompatActivity {
         logearse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(validarUsuarioL(emailUsuario,claveUsuario)){
-                    String email = emailUsuario.getText().toString();
-                    String clave = claveUsuario.getText().toString();
+                String email = emailUsuario.getText().toString();
+                String clave = claveUsuario.getText().toString();
 
-                    int id_usuario= dbUsuario.obtenerIdUsuario(email, clave);
+                if (email.equals("") || clave.equals("")){
+                    Toast.makeText(LoginActivity.this, "Debes completar todos los campos", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Boolean checkDatos = dbUsuario.checkEmailPassword(email, clave);
+                    if (checkDatos){
+                        Toast.makeText(LoginActivity.this, "Inicio exitoso", Toast.LENGTH_SHORT).show();
+                        int id_usuario = dbUsuario.obtenerIdUsuario(email, clave);
+                        SharedPreferences sharedPreferences = getSharedPreferences("com.example.myapp.PREFERENCES", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putInt("id_usuario", id_usuario);
+                        Log.d("Home activity", "UsuarioId guardado en preferencias: " + id_usuario);
+                        editor.apply();
+//                        Log.d("LoginActivity", "UsuarioId obtenido en login: " + id_usuario);
 
-                    Intent home = new Intent(LoginActivity.this, Home_Activity.class);
-                    home.putExtra("id_ususario", id_usuario);
-                    finish();
-                    startActivity(home);
+                        Intent home = new Intent(LoginActivity.this, Home_Activity.class);
+                        home.putExtra("id_usuario", id_usuario);
+                        startActivity(home);
+                        finish();
+                    }
+                    else {
+                        Toast.makeText(LoginActivity.this, "Datos invalidos", Toast.LENGTH_SHORT).show();
+
+                    }
                 }
             }
         });
@@ -83,24 +101,25 @@ public class LoginActivity extends AppCompatActivity {
                 finish();
             }
         });
-        
-    }//<llave de onCreate
-    private boolean validarUsuarioL(EditText et_email, EditText et_pass) {
-        String email = et_email.getText().toString().trim();
-        String pass = et_pass.getText().toString().trim();
 
-        if (email.isEmpty() || pass.isEmpty()) {
-            // Mostrar mensaje de error
-            Toast.makeText(getApplicationContext(), "Por favor, complete todos los campos", Toast.LENGTH_LONG).show();
-            return false;
-        } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            // Mostrar mensaje de error
-            Toast.makeText(getApplicationContext(), "Ingrese un e-mail válido", Toast.LENGTH_LONG).show();
-            return false;
-        } else {
-            // Los campos están completos y el email es válido inicia sesion
-            Toast.makeText(getApplicationContext(), "Bienvenido", Toast.LENGTH_SHORT).show();
-            return true;
-        }
-    }
+    }//<llave de onCreate
+
+//    private boolean validarUsuarioL(EditText et_email, EditText et_pass) {
+//        String email = et_email.getText().toString().trim();
+//        String pass = et_pass.getText().toString().trim();
+//
+//        if (email.isEmpty() || pass.isEmpty()) {
+//            // Mostrar mensaje de error
+//            Toast.makeText(getApplicationContext(), "Por favor, complete todos los campos", Toast.LENGTH_LONG).show();
+//            return false;
+//        } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+//            // Mostrar mensaje de error
+//            Toast.makeText(getApplicationContext(), "Ingrese un e-mail válido", Toast.LENGTH_LONG).show();
+//            return false;
+//        } else {
+//            // Los campos están completos y el email es válido inicia sesion
+//            Toast.makeText(getApplicationContext(), "Bienvenido", Toast.LENGTH_SHORT).show();
+//            return true;
+//        }
+//    }
 }

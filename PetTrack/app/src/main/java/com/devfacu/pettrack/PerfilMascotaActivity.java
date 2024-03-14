@@ -21,23 +21,25 @@ import com.devfacu.pettrack.entidades.Mascota;
 public class PerfilMascotaActivity extends AppCompatActivity {
     private static final int TU_REQUEST_CODE = 123; // Puedes usar cualquier número que desees
 
-    Button btnEditar, btnVacunaN,btnDesparasitacionN,btnVerVacunas,btnVerDesparasitaciones;
+    Button btnEditarMascota, btnVacunaNueva, btnDesparasitacionN, btnVerVacunas, btnVerDesparasitaciones;
     TextView  nombre,nacimiento,sexo;
     ImageButton btnVolver;
     ImageView fotoPerfil;
     int id_mascota;
+    int id_usuario;
     Mascota mascota;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil_mascota);
         btnVolver=findViewById(R.id.imgBtnVolver_P);
+
         fotoPerfil=findViewById(R.id.foto_perfil_P);
-        btnEditar=findViewById(R.id.btn_editar_P);
+        btnEditarMascota=findViewById(R.id.btn_editar_P);
         nombre=findViewById(R.id.tvNombre_P);
         nacimiento=findViewById(R.id.tvNacimiento_P);
         sexo=findViewById(R.id.tvSexo_P);
-        btnVacunaN=findViewById(R.id.btn_nueva_vacuna_P);
+        btnVacunaNueva=findViewById(R.id.btn_nueva_vacuna_P);
         btnDesparasitacionN=findViewById(R.id.btn_nueva_desparasitacion_P);
         btnVerVacunas=findViewById(R.id.btn_ver_vacunas_P);
         btnVerDesparasitaciones=findViewById(R.id.btn_ver_desparasitaciones_P);
@@ -52,10 +54,10 @@ public class PerfilMascotaActivity extends AppCompatActivity {
 
             if (mascota != null){
                 nombre.setText(mascota.getNombre());
-                nacimiento.setText("Fecha Nacimiento "+mascota.getFecha_nacimiento());
-                sexo.setText("Sexo "+mascota.getSexo());
+                nacimiento.setText("Fecha Nacimiento: "+mascota.getFecha_nacimiento());
+                sexo.setText("Sexo: "+mascota.getSexo());
 
-
+                int id_usuario = mascota.getId_usuario();
                 if (imgBytes != null && imgBytes.length > 0) {
                     cargarImagenDesdeBlob(imgBytes);
                 } else {
@@ -67,10 +69,10 @@ public class PerfilMascotaActivity extends AppCompatActivity {
 
 
         //<----btn editar perfil de mascota
-        btnEditar.setOnClickListener(new View.OnClickListener() {
+        btnEditarMascota.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int id_usuario = mascota.getId_usuario();
+//                int id_usuario = mascota.getId_usuario();
                 Intent editarMascota = new Intent(PerfilMascotaActivity.this, EditarMascotaActivity.class);
                 editarMascota.putExtra("id_mascota", id_mascota);
                 editarMascota.putExtra("imagen_blob", imgBytes);
@@ -79,7 +81,7 @@ public class PerfilMascotaActivity extends AppCompatActivity {
             }
         });
         //<-----btn Registrar vacuna
-        btnVacunaN.setOnClickListener(new View.OnClickListener() {
+        btnVacunaNueva.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent vacunaN = new Intent(PerfilMascotaActivity.this, RegistrarVacunacionActivity.class);

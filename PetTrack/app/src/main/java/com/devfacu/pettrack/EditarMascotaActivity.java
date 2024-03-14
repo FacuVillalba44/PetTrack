@@ -2,7 +2,9 @@ package com.devfacu.pettrack;
 
 import android.Manifest;
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -175,6 +177,7 @@ public class EditarMascotaActivity extends AppCompatActivity {
         botonGuardarCambios.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d(TAG, "Guardando los cambios de la mascota...");
                 String nombreMascota = editTextNombreMascota.getText().toString();
                 String fechaNacimiento = editTextFechaNacimiento.getText().toString();
                 String especie = editTextEspecie.getText().toString();
@@ -186,8 +189,7 @@ public class EditarMascotaActivity extends AppCompatActivity {
 
                 String imagenPerfil = (selectedImageUri != null) ? selectedImageUri.toString() : "";
 
-                int idUsuario = intent.getIntExtra("id_usuario", -1);
-                Log.d("MainActivity", "Valor de idUsuario: " + idUsuario);
+
 
                 try {
                     dbMascota = new DbMascota(EditarMascotaActivity.this);
@@ -204,12 +206,25 @@ public class EditarMascotaActivity extends AppCompatActivity {
                         bytesImagen = imgBytes;
                     }
 
+                    SharedPreferences sharedPreferences = getSharedPreferences("com.example.myapp.PREFERENCES", Context.MODE_PRIVATE);
+                    int id_usuario_guardado = sharedPreferences.getInt("id_usuario", -1);
 
-                    int mascotaEditada = dbMascota.editarMascota(id_mascota, nombreMascota, fechaNacimiento, especie, raza, sexo, imagenPerfil, bytesImagen, id_usuario);
+                    if (id_usuario_guardado != -1) {
+                        // El ID de usuario se recuperó correctamente
+                        Log.d(TAG, "ID de usuario recuperado de las preferencias: " + id_usuario_guardado);
+                    } else {
+                        // No se pudo recuperar el ID de usuario de las preferencias
+                        Log.d(TAG, "No se pudo recuperar el ID de usuario de las preferencias");
+                    }
+
+
+                    int mascotaEditada = dbMascota.editarMascota(id_mascota, nombreMascota, fechaNacimiento, especie, raza, sexo, imagenPerfil, bytesImagen, id_usuario_guardado);
 
                     if (mascotaEditada > 0) {
+                        Log.d(TAG, "Los cambios de la mascota se guardaron correctamente");
+
                         Toast.makeText(EditarMascotaActivity.this, "Registro exitoso", Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(EditarMascotaActivity.this, Home_Activity.class);
+                        Intent intent = new Intent(EditarMascotaActivity.this, TusMascotasActivity.class);
                         intent.putExtra("id_mascota", id_mascota);
                         setResult(RESULT_OK, intent);
                         finish();
@@ -219,6 +234,8 @@ public class EditarMascotaActivity extends AppCompatActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                     Log.e("EditarMascotaActivity", "Error al registrar mascota: " + e.getMessage());
+                    Log.e(TAG, "Error al registrar mascota: " + e.getMessage());
+
                 }
             }
         });
