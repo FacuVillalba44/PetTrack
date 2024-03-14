@@ -121,10 +121,7 @@ public class ListaMascotasAdapter extends RecyclerView.Adapter<ListaMascotasAdap
             imagenPerfil = itemView.findViewById(R.id.imageViewPerfilMascota);
             nombreMascota = itemView.findViewById(R.id.textViewNombreMascota);
             botonPerfil = itemView.findViewById(R.id.buttonPerfilMascota);
-//            fechaNacimiento = itemView.findViewById(R.id.textViewFecNac);
-//            especie = itemView.findViewById(R.id.textViewEspecie);
-//            raza = itemView.findViewById(R.id.textViewtRaza);
-//            sexo = itemView.findViewById(R.id.textViewSexo);
+
         }
     }
 }

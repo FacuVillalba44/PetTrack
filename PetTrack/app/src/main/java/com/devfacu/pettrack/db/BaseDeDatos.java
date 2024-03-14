@@ -85,19 +85,6 @@ public class BaseDeDatos extends SQLiteOpenHelper {
                 ")";
         db.execSQL(create_table_mascota);
 
-//        //TABLA RECORDATORIO
-//        String create_table_recordatorio = "CREATE TABLE IF NOT EXISTS " + TABLE_RECORDATORIO + "(" +
-//                COLUMN_ID_RECORDATORIO + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-//                COLUMN_MOTIVO_VISITA + " TEXT NOT NULL, " +
-//                COLUMN_FECHA_RECORDATORIO + " TEXT NOT NULL, " +
-//                COLUMN_ESTADO + " TEXT NOT NULL, " +
-//                COLUMN_ID_USUARIO + " INTEGER, " +
-//                COLUMN_ID_REGISTRO + " INTEGER, " +
-//                "FOREIGN KEY(" + COLUMN_ID_USUARIO + ") REFERENCES " + TABLE_USUARIO + "(" + COLUMN_ID_USUARIO + "), " +
-//                "FOREIGN KEY(" + COLUMN_ID_REGISTRO + ") REFERENCES " + TABLE_REGISTRO + "(" + COLUMN_ID_REGISTRO + ")" +
-//                ")";
-//        db.execSQL(create_table_recordatorio);
-
         //TABLA VACUNAS
         String create_table_vacuna = "CREATE TABLE IF NOT EXISTS " + TABLE_VACUNA + "(" +
                 COLUMN_ID_VACUNA + " INTEGER PRIMARY KEY AUTOINCREMENT, " +

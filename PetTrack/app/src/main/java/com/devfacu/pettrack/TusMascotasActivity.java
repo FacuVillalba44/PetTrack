@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 public class TusMascotasActivity extends AppCompatActivity {
 
-    private static final int TU_CODIGO_DE_EDICION = 1; // Puedes elegir cualquier número aquí
+    private static final int TU_CODIGO_DE_EDICION = 1;
     private ArrayList<Mascota> listaArrayMascotas;
     private ListaMascotasAdapter listaMascotasAdapter;
 
