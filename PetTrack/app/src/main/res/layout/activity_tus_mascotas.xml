@@ -9,7 +9,7 @@
     tools:context=".TusMascotasActivity">
 
     <ImageButton
-        android:id="@+id/imgBtnVolver_Perfiles"
+        android:id="@+id/imgBtnVolver_TM"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="14dp"
@@ -20,7 +20,8 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/btnvolver" />
+        app:srcCompat="@drawable/btnvolver"
+        tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
 
     <TextView
         android:id="@+id/tvTittleperfiles"

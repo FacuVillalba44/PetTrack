@@ -1,7 +1,9 @@
 package com.devfacu.pettrack;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,10 +14,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
+import com.devfacu.pettrack.db.DbMascota;
 import com.devfacu.pettrack.db.DbVacuna;
+import com.devfacu.pettrack.entidades.Vacuna;
 
 import java.util.Calendar;
 
@@ -23,8 +28,12 @@ public class EditarVacunaActivity extends AppCompatActivity {
     private TextView nombre, fecha_aplicacion;
 
     private EditText proxima_aplicacion;
-    private Button botonEditarVacuna;
+    private Button botonEditarVacuna, botonEliminarVacuna;
     private DbVacuna dbVacuna;
+    private int id_vacuna;
+    private int id_mascota;
+
+    private Vacuna vacuna;
     private int year, month, day;
 
     @Override
@@ -35,13 +44,20 @@ public class EditarVacunaActivity extends AppCompatActivity {
         fecha_aplicacion = findViewById(R.id.textViewFechaAplicacion);
         proxima_aplicacion = findViewById(R.id.editTextProximaAplicacion);
         botonEditarVacuna = findViewById(R.id.btnEditarVacuna);
+        botonEliminarVacuna = findViewById(R.id.btnEliminarVacuna);
 
+
+        dbVacuna = new DbVacuna(this);
         Intent intent = getIntent();
         String nombreVacuna = intent.getStringExtra("nombre_vacuna");
         String fecha_de_aplicacion = intent.getStringExtra("fecha_aplicacion");
         String prox_aplicacion = intent.getStringExtra("proxima_aplicacion");
-        int id_mascota = intent.getIntExtra("id_mascota", -1);
-        int id_vacuna = intent.getIntExtra("id_vacuna", -1);
+        this.id_mascota = intent.getIntExtra("id_mascota", -1);
+        this.id_vacuna = intent.getIntExtra("id_vacuna", -1);
+        Log.d("EditarMascota", "ID de vacuna a eliminar: " + id_vacuna);
+
+        Vacuna vacuna = dbVacuna.obtenerVacunaPorId(id_vacuna);
+
 
         nombre.setText(nombreVacuna);
         fecha_aplicacion.setText(fecha_de_aplicacion);
@@ -64,11 +80,23 @@ public class EditarVacunaActivity extends AppCompatActivity {
                 if (id_vacunaEditada > 0) {
                     Toast.makeText(EditarVacunaActivity.this, "Vacuna editada", Toast.LENGTH_LONG).show();
 
-                    Intent volverListaVacunas = new Intent(EditarVacunaActivity.this, vacunas_mascota_Activity.class);
+                    Intent volverListaVacunas = new Intent(EditarVacunaActivity.this, TusMascotasActivity.class);
                     volverListaVacunas.putExtra("id_mascota", id_mascota);
                     startActivity(volverListaVacunas);
                 } else {
                     Toast.makeText(EditarVacunaActivity.this, "Error al editar vacuna", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+        botonEliminarVacuna.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Vacuna vacuna = dbVacuna.obtenerVacunaPorId(id_vacuna);
+                if (vacuna != null) {
+                    mostrarDialogoConfirmacionBorrar(vacuna);
+                } else {
+                    Toast.makeText(EditarVacunaActivity.this, "No se encontró la vacuna", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -121,4 +149,48 @@ public class EditarVacunaActivity extends AppCompatActivity {
             this.day = day;
         }
     }
+    private void mostrarDialogoConfirmacionBorrar(Vacuna vacuna) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        id_vacuna = vacuna.getId_vacuna();
+        Log.d("EditarMascota", "ID de vacuna a eliminar: " + id_vacuna);
+        builder.setTitle("Confirmar eliminación");
+        builder.setMessage("¿Estás seguro de que deseas eliminar esta vacuna?");
+
+        builder.setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                eliminarVacuna(id_vacuna);
+            }
+        });
+
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        builder.create().show();
+    }
+
+    private void eliminarVacuna(int id_vacuna) {
+        DbVacuna dbVacuna = new DbVacuna(EditarVacunaActivity.this);
+
+        if (id_vacuna > 0) {
+            int rowsAffected = dbVacuna.eliminarVacuna(id_vacuna);
+
+            if (rowsAffected > 0) {
+                Toast.makeText(EditarVacunaActivity.this, "Vacuna eliminada", Toast.LENGTH_SHORT).show();
+                Intent volverListaVacunas = new Intent(EditarVacunaActivity.this, vacunas_mascota_Activity.class);
+                volverListaVacunas.putExtra("id_mascota", id_mascota);
+                startActivity(volverListaVacunas);
+            } else {
+                Toast.makeText(EditarVacunaActivity.this, "Error al eliminar la vacuna", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            Toast.makeText(EditarVacunaActivity.this, "Error! El ID de la vacuna es menor a cero", Toast.LENGTH_LONG).show();
+        }
+    }
+
+
 }

@@ -137,7 +137,7 @@ public class DbMascota extends BaseDeDatos {
                 mascota.setSexo(cursor.getString(cursor.getColumnIndexOrThrow(BaseDeDatos.COLUMN_SEXO)));
                 mascota.setImagen(cursor.getString(cursor.getColumnIndexOrThrow(BaseDeDatos.COLUMN_IMAGEN_MASCOTA)));
 
-                byte[] imagenBlob = cursor.getBlob(cursor.getColumnIndexOrThrow(BaseDeDatos.COLUMN_IMAGEN_MASCOTA));
+                byte[] imagenBlob = cursor.getBlob(cursor.getColumnIndexOrThrow(BaseDeDatos.COLUMN_IMAGEN_BLOB));
                 if (imagenBlob != null) {
                     mascota.setImagen_blob(imagenBlob);
                 } else {

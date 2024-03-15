@@ -122,12 +122,11 @@ public class RegistrarDesparasitacionActivity extends AppCompatActivity {
 
         //_____Inicio de manejo del botón  de la barra de nativa para volver: Obtener el Dispatcher para el botón de "volver"
         OnBackPressedDispatcher onBackPressedDispatcher = getOnBackPressedDispatcher();
-        //_____Registrar un callback para manejar el botón de "volver"
         onBackPressedDispatcher.addCallback(this, new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {
-                Intent volverAHome = new Intent(RegistrarDesparasitacionActivity.this, Home_Activity.class);
-                startActivity(volverAHome);
+                // Finaliza la actividad actual
+                setResult(RESULT_OK); // Envía un resultado indicando que se finalizó correctamente
                 finish();
             }
         });
