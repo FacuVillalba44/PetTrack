@@ -148,7 +148,7 @@ public class RegistrarVacunacionActivity extends AppCompatActivity {
         onBackPressedDispatcher.addCallback(this, new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {
-                Intent volverAHome = new Intent(RegistrarVacunacionActivity.this, Home_Activity.class);
+                Intent volverAHome = new Intent(RegistrarVacunacionActivity.this, TusMascotasActivity.class);
                 startActivity(volverAHome);
                 finish();
             }

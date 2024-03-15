@@ -15,6 +15,7 @@ import androidx.activity.OnBackPressedDispatcher;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.devfacu.pettrack.db.DbUsuario;
+import java.util.Base64;
 
 public class RegistrarseActivity extends AppCompatActivity {
     private EditText etNombreUsuario, etEmail, etPass1, etPass2;
@@ -41,7 +42,9 @@ public class RegistrarseActivity extends AppCompatActivity {
                     String nombre_usuario = etNombreUsuario.getText().toString();
                     String password = etPass1.getText().toString();
 
-                    int id_usuario = dbUsuario.crearUsuario(nombre_usuario, email, password);
+                    String passwordCifrado = Base64.getEncoder().encodeToString(password.getBytes());
+
+                    int id_usuario = dbUsuario.crearUsuario(nombre_usuario, email, passwordCifrado);
                     Log.d("LoginActivity", "UsuarioId obtenido: " + id_usuario);
                     if (id_usuario>0){
                         Toast.makeText(getApplicationContext(), "Bienvenido, inicia sesion con tu credenciales", Toast.LENGTH_SHORT).show();

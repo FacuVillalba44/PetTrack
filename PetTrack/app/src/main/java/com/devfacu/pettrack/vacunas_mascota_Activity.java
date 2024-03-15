@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.OnBackPressedCallback;
+import androidx.activity.OnBackPressedDispatcher;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -55,6 +57,17 @@ public class vacunas_mascota_Activity extends AppCompatActivity {
         recyclerViewVacunas.setAdapter(listaVacunasAdapter);
 
         cargarVacunas();
+
+        OnBackPressedDispatcher onBackPressedDispatcher = getOnBackPressedDispatcher();
+
+        onBackPressedDispatcher.addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                Intent volverAHome = new Intent(vacunas_mascota_Activity.this, TusMascotasActivity.class);
+                startActivity(volverAHome);
+                finish();
+            }
+        });
     }
 
     private void cargarVacunas() {
