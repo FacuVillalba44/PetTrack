@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import androidx.activity.OnBackPressedCallback;
+import androidx.activity.OnBackPressedDispatcher;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -29,6 +31,17 @@ public class TusMascotasActivity extends AppCompatActivity {
 
         // Cargar la lista de mascotas
         cargarListaMascotas();
+
+        OnBackPressedDispatcher onBackPressedDispatcher = getOnBackPressedDispatcher();
+
+        onBackPressedDispatcher.addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                Intent volverAHome = new Intent(TusMascotasActivity.this, Home_Activity.class);
+                startActivity(volverAHome);
+                finish();
+            }
+        });
 
     }
 

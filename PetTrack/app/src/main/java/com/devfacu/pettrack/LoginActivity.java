@@ -61,8 +61,9 @@ public class LoginActivity extends AppCompatActivity {
 
                     Boolean checkDatos = dbUsuario.checkEmailPassword(email, claveCifrada);
                     if (checkDatos){
+
                         Toast.makeText(LoginActivity.this, "Inicio exitoso", Toast.LENGTH_SHORT).show();
-                        int id_usuario = dbUsuario.obtenerIdUsuario(email, clave);
+                        int id_usuario = dbUsuario.obtenerIdUsuario(email, claveCifrada);
                         SharedPreferences sharedPreferences = getSharedPreferences("com.example.myapp.PREFERENCES", Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putInt("id_usuario", id_usuario);

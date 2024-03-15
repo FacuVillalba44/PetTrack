@@ -127,7 +127,7 @@ public class PerfilMascotaActivity extends AppCompatActivity {
         onBackPressedDispatcher.addCallback(this, new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {
-                Intent volverAHome = new Intent(PerfilMascotaActivity.this, inicioActivity.class);
+                Intent volverAHome = new Intent(PerfilMascotaActivity.this, TusMascotasActivity.class);
                 startActivity(volverAHome);
                 finish();
             }
