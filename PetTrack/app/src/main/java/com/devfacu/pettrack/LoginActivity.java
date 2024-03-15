@@ -20,6 +20,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.devfacu.pettrack.db.DbUsuario;
 
+import java.util.Base64;
+
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -55,7 +57,9 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this, "Debes completar todos los campos", Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    Boolean checkDatos = dbUsuario.checkEmailPassword(email, clave);
+                    String claveCifrada = Base64.getEncoder().encodeToString(clave.getBytes());
+
+                    Boolean checkDatos = dbUsuario.checkEmailPassword(email, claveCifrada);
                     if (checkDatos){
                         Toast.makeText(LoginActivity.this, "Inicio exitoso", Toast.LENGTH_SHORT).show();
                         int id_usuario = dbUsuario.obtenerIdUsuario(email, clave);
