@@ -1,7 +1,9 @@
 package com.devfacu.pettrack;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageButton;
 
 import androidx.activity.OnBackPressedCallback;
@@ -22,15 +24,27 @@ public class TusMascotasActivity extends AppCompatActivity {
     private static final int TU_CODIGO_DE_EDICION = 1;
     private ArrayList<Mascota> listaArrayMascotas;
     private ListaMascotasAdapter listaMascotasAdapter;
-    ImageButton volverAHome_TM;
+    private ImageButton volverAHome_TM;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tus_mascotas);
-
+        volverAHome_TM=findViewById(R.id.imgBtnVolver_TM);
         // Cargar la lista de mascotas
         cargarListaMascotas();
+
+
+
+        volverAHome_TM.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent volver = new Intent(TusMascotasActivity.this, Home_Activity.class);
+                startActivity(volver);
+                finish();
+            }
+        });
 
         OnBackPressedDispatcher onBackPressedDispatcher = getOnBackPressedDispatcher();
 

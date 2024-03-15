@@ -48,7 +48,7 @@ public class Home_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 new AlertDialog.Builder(Home_Activity.this)
-                        .setMessage("¿Estás seguro de que quieres volver cerrar sesion?")
+                        .setMessage("¿Estás seguro de que quieres cerrar sesion?")
                         .setCancelable(false)
                         .setPositiveButton("Sí", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
@@ -63,7 +63,6 @@ public class Home_Activity extends AppCompatActivity {
                                 // Si el usuario cancela, no hace nada
                                 dialog.cancel();
                             }
-
                             // Agrega la implementación del método cancel()
                             public void cancel() {
                                 // no realizar ninguna acción específica pero debe estar
@@ -99,24 +98,19 @@ public class Home_Activity extends AppCompatActivity {
 //                verMascotasIntent.putExtra("id_usuario", id_usuario);
 //                Log.d("Home", "id usuario obtenido home antes de ir a ver mascotas: " + id_usuario);
                 startActivity(verMascotasIntent);
+                finish();
             }
         });
 
-
-
-/*---------------Inicio metodo de manejo del botón del celu--------------------
-          obtener el DisPatcher */
         OnBackPressedDispatcher onBackPressedDispatcher = getOnBackPressedDispatcher();
-        // Registrar un callback para manejar el botón de "volver"
         onBackPressedDispatcher.addCallback(this, new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {
                 new AlertDialog.Builder(Home_Activity.this)
-                        .setMessage("¿Estás seguro de que quieres volver cerrar sesion?")
+                        .setMessage("¿Estás seguro de que quieres cerrar sesion?")
                         .setCancelable(false)
                         .setPositiveButton("Sí", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                // Si el usuario confirma, cierra la actividad actual
                                 Intent salir = new Intent(Home_Activity.this, LoginActivity.class);
                                 finish();
                                 startActivity(salir);
@@ -124,19 +118,13 @@ public class Home_Activity extends AppCompatActivity {
                         })
                         .setNegativeButton("No", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                // Si el usuario cancela, no hace nada
                                 dialog.cancel();
                             }
-
-                            // Agrega la implementación del método cancel()
                             public void cancel() {
-                                // no realizar ninguna acción específica pero debe estar
                             }
                         })
                         .show();
             }
         });
-
-
     }//<cierre onCreate
 }
