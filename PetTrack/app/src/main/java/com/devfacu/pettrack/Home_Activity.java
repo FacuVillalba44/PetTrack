@@ -41,7 +41,7 @@ public class Home_Activity extends AppCompatActivity {
             // No se pudo recuperar el ID de usuario de las preferencias
             Log.d("Home_Activity", "No se pudo recuperar el ID de usuario de las preferencias");
         }
-        int id_usuario = id_usuario_guardado;
+
 
         //______btn para cerrar sesion
         CerrarSesion.setOnClickListener(new View.OnClickListener() {

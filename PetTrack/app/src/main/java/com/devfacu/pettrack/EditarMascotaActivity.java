@@ -23,6 +23,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResult;
@@ -215,18 +216,21 @@ public class EditarMascotaActivity extends AppCompatActivity {
                         Log.d(TAG, "No se pudo recuperar el ID de usuario de las preferencias");
                     }
 
-                    int mascotaEditada = dbMascota.editarMascota(id_mascota, nombreMascota, fechaNacimiento, especie, raza, sexo, imagenPerfil, bytesImagen, id_usuario_guardado);
+                        int mascotaEditada = dbMascota.editarMascota(id_mascota, nombreMascota, fechaNacimiento, especie, raza, sexo, imagenPerfil, bytesImagen, id_usuario_guardado);
 
-                    if (mascotaEditada > 0) {
-                        Log.d(TAG, "Los cambios de la mascota se guardaron correctamente");
+                        if (mascotaEditada > 0) {
+                            Log.d(TAG, "Los cambios de la mascota se guardaron correctamente");
 
-                        Toast.makeText(EditarMascotaActivity.this, "Registro exitoso", Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(EditarMascotaActivity.this, TusMascotasActivity.class);
-                        intent.putExtra("id_mascota", id_mascota);
-                        setResult(RESULT_OK, intent);
-                        finish();
-                        startActivity(intent);
-                    }
+                            Toast.makeText(EditarMascotaActivity.this, "Registro exitoso", Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(EditarMascotaActivity.this, TusMascotasActivity.class);
+                            intent.putExtra("id_mascota", id_mascota);
+                            setResult(RESULT_OK, intent);
+                            finish();
+                            startActivity(intent);
+                        }
+
+
+
                 } catch (Exception e) {
                     e.printStackTrace();
                     Log.e("EditarMascotaActivity", "Error al registrar mascota: " + e.getMessage());
@@ -332,10 +336,10 @@ public class EditarMascotaActivity extends AppCompatActivity {
             Toast.makeText(EditarMascotaActivity.this, "Error al eliminar la mascota", Toast.LENGTH_SHORT).show();
         }
     }
-
     private void volverATusMascotasActivity() {
         Intent intent = new Intent(EditarMascotaActivity.this, TusMascotasActivity.class);
         startActivity(intent);
         finish();
     }
+
 }
