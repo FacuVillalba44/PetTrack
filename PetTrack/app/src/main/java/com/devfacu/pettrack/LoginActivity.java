@@ -21,6 +21,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.devfacu.pettrack.db.DbUsuario;
 
 import java.util.Base64;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -57,19 +59,19 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this, "Debes completar todos los campos", Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    String claveCifrada = Base64.getEncoder().encodeToString(clave.getBytes());
+                    String claveCifrada = encryptPassword(clave);
 
                     Boolean checkDatos = dbUsuario.checkEmailPassword(email, claveCifrada);
                     if (checkDatos){
 
                         Toast.makeText(LoginActivity.this, "Inicio exitoso", Toast.LENGTH_SHORT).show();
                         int id_usuario = dbUsuario.obtenerIdUsuario(email, claveCifrada);
+
                         SharedPreferences sharedPreferences = getSharedPreferences("com.example.myapp.PREFERENCES", Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putInt("id_usuario", id_usuario);
                         Log.d("Home activity", "UsuarioId guardado en preferencias: " + id_usuario);
                         editor.apply();
-//                        Log.d("LoginActivity", "UsuarioId obtenido en login: " + id_usuario);
 
                         Intent home = new Intent(LoginActivity.this, Home_Activity.class);
                         home.putExtra("id_usuario", id_usuario);
@@ -108,4 +110,28 @@ public class LoginActivity extends AppCompatActivity {
         });
 
     }//<llave de onCreate
+    private String encryptPassword(String password) {
+        try {
+            // Crear una instancia de MessageDigest para SHA-256
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+
+            // Obtener los bytes de la contraseña
+            byte[] passwordBytes = password.getBytes();
+
+            // Calcular el hash de la contraseña
+            byte[] hashedBytes = digest.digest(passwordBytes);
+
+            // Convertir el hash a una representación hexadecimal
+            StringBuilder hexString = new StringBuilder();
+            for (byte b : hashedBytes) {
+                String hex = Integer.toHexString(0xff & b);
+                if (hex.length() == 1) hexString.append('0');
+                hexString.append(hex);
+            }
+            return hexString.toString();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

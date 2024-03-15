@@ -16,6 +16,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.devfacu.pettrack.db.DbUsuario;
 import java.util.Base64;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class RegistrarseActivity extends AppCompatActivity {
     private EditText etNombreUsuario, etEmail, etPass1, etPass2;
@@ -42,7 +44,7 @@ public class RegistrarseActivity extends AppCompatActivity {
                     String nombre_usuario = etNombreUsuario.getText().toString();
                     String password = etPass1.getText().toString();
 
-                    String passwordCifrado = Base64.getEncoder().encodeToString(password.getBytes());
+                    String passwordCifrado = encryptPassword(password);
 
                     int id_usuario = dbUsuario.crearUsuario(nombre_usuario, email, passwordCifrado);
                     Log.d("LoginActivity", "UsuarioId obtenido: " + id_usuario);
@@ -96,6 +98,30 @@ public class RegistrarseActivity extends AppCompatActivity {
         } else {
             Toast.makeText(getApplicationContext(), "Te has registrado correctamente", Toast.LENGTH_SHORT).show();
             return true;
+        }
+    }
+    private String encryptPassword(String password) {
+        try {
+            // Crear una instancia de MessageDigest para SHA-256
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+
+            // Obtener los bytes de la contraseña
+            byte[] passwordBytes = password.getBytes();
+
+            // Calcular el hash de la contraseña
+            byte[] hashedBytes = digest.digest(passwordBytes);
+
+            // Convertir el hash a una representación hexadecimal
+            StringBuilder hexString = new StringBuilder();
+            for (byte b : hashedBytes) {
+                String hex = Integer.toHexString(0xff & b);
+                if (hex.length() == 1) hexString.append('0');
+                hexString.append(hex);
+            }
+            return hexString.toString();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+            return null;
         }
     }
 
